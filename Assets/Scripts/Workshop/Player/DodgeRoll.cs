@@ -18,7 +18,8 @@ namespace WarriorOrigins
         private float actCooldown;
         public float pushAmount;
 
-        bool Roll;
+        public bool Roll;
+
 
         private void Start()
         {
@@ -38,7 +39,7 @@ namespace WarriorOrigins
                 lastMoveDirection = movement;
             }
 
-            bool Roll = Input.GetKeyDown(KeyCode.Space);
+            Roll = Input.GetKeyDown(KeyCode.Space);
             
             if (actCooldown <= 0)
             {
@@ -56,6 +57,7 @@ namespace WarriorOrigins
             else
             {
                 actCooldown -= Time.deltaTime;
+                
             }
         }
 

@@ -18,6 +18,8 @@ namespace WarriorOrigins
 
         public LayerMask whatIsEnemies;
 
+        bool attacking = false;
+
         void Start()
         {
             animator = GetComponent<Animator>();
@@ -28,7 +30,10 @@ namespace WarriorOrigins
             {
                 if (Input.GetButton("Fire1"))
                 {
-                    Attack();
+                    //Attack();
+                    attacking = true;
+                    actCooldown = attackCooldown;
+                    animator.SetTrigger("isAttacking");
                 }
             }
             else
@@ -38,16 +43,15 @@ namespace WarriorOrigins
             
         }
 
-        void Attack()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosition.position, attackRange, whatIsEnemies);
-            for (int i = 0; i < enemiesToDamage.Length; i++)
+            if (attacking)
             {
-                enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                if (collision.transform.GetComponent<Transform>().CompareTag("Enemy"))
+                {
+                    collision.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                }
             }
-            
-            actCooldown = attackCooldown;
-            animator.SetTrigger("isAttacking");
         }
 
         void OnDrawGizmosSelected()

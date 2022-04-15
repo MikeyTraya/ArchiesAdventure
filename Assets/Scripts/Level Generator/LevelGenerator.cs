@@ -18,6 +18,8 @@ namespace WarriorOrigins
 
         public CinemachineVirtualCamera myCinemachine;
 
+        public GameObject player;
+
         void Start()
         {
             randomNumber = Random.Range(0, map.Length);
@@ -67,7 +69,7 @@ namespace WarriorOrigins
             {
                 if (colorSpawner.color.Equals(spawnColor))
                 {
-                    var player = Instantiate(colorSpawner.prefab, new Vector3(x + .5f, y + .5f, 0), Quaternion.identity, transform);
+                    player = Instantiate(colorSpawner.prefab, new Vector3(x + .5f, y + .5f, 0), Quaternion.identity, transform);
                     myCinemachine.m_Follow = player.transform;
                 }
             }

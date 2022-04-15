@@ -14,16 +14,17 @@ namespace WarriorOrigins
 
         bool rightFace = true;
         bool isRunning = false;
-        
 
         Animator animator;
+
 
         void Start()
         {
             animator = GetComponent<Animator>();
             cam = Camera.main;
-
+            
         }
+
         void Update()
         {
             PlayerInput();
@@ -40,8 +41,8 @@ namespace WarriorOrigins
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
 
-            movement = new Vector2(x,y).normalized;
-            
+            movement = new Vector2(x, y).normalized;
+
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
             if (mousePos.x < transform.position.x && rightFace)
@@ -64,7 +65,7 @@ namespace WarriorOrigins
         {
             if (movement != Vector2.zero)
             {
-                rb.velocity = movement * moveSpeed;
+                rb.velocity = movement * moveSpeed * moveSpeed;
                 isRunning = true;
             }
             else
