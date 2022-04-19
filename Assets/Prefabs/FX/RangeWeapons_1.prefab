@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8925930338880463585}
   - component: {fileID: 523735441700677243}
   - component: {fileID: 9166376017691638337}
-  - component: {fileID: 1060942038689840315}
+  - component: {fileID: 121407810}
   - component: {fileID: -5027580681250406632}
   m_Layer: 7
   m_Name: RangeWeapons_1
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &1060942038689840315
+--- !u!61 &121407810
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.050032377, y: -0.00070881844}
+  m_Offset: {x: 0.044834226, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41404206, y: 0.31294048}
+  m_Size: {x: 0.40364575, y: 0.3129405}
   m_EdgeRadius: 0
 --- !u!114 &-5027580681250406632
 MonoBehaviour:

@@ -10,13 +10,8 @@ namespace WarriorOrigins
 
         public float attackCooldown = 6f;
         private float actCooldown;
-        public float attackRange;
 
         public int damage;
-
-        public Transform attackPosition;
-
-        public LayerMask whatIsEnemies;
 
         bool attacking = false;
 
@@ -26,14 +21,18 @@ namespace WarriorOrigins
         }
         void Update()
         {
-            if (actCooldown <= 0)
+            if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > 15)
             {
                 if (Input.GetButton("Fire1"))
                 {
-                    //Attack();
+                    StaminaBar.Instance.UseStamina(15);
                     attacking = true;
                     actCooldown = attackCooldown;
                     animator.SetTrigger("isAttacking");
+                }
+                else
+                {
+                    attacking = false;
                 }
             }
             else
@@ -43,21 +42,22 @@ namespace WarriorOrigins
             
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        void OnTriggerEnter2D(Collider2D collision)
         {
             if (attacking)
             {
-                if (collision.transform.GetComponent<Transform>().CompareTag("Enemy"))
+                if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<CapsuleCollider2D>())
                 {
-                    collision.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    return;
+                }
+
+                if (collision.gameObject.CompareTag("EnemyStationary") && collision.gameObject.GetComponent<CapsuleCollider2D>())
+                {
+                    collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
+                    return;
                 }
             }
-        }
-
-        void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPosition.position, attackRange);
         }
     }
 }

@@ -6,24 +6,25 @@ namespace WarriorOrigins
 {
     public class EnemyFollowSkeleton : MonoBehaviour
     {
-        public LevelGenerator target;
-
         public float speed;
         public float minimumDistance;
         public float agroRange;
-        
+        public float attackCooldown;
+        private float actCooldown;
+        public int attackDamage;
+
         Animator animator;
         Rigidbody2D rb;
 
         bool rightFace = true;
         bool isRunning = false;
+        bool isAttacking = false;
         bool isFollowingPlayer = false;
 
-        public Vector2 movement;
-        public Vector2 newPosition;
+        private Vector2 movement;
 
         //AI
-        public bool isPatrolling = false;
+        private bool isPatrolling = false;
         private float latestDirectionChangeTime;
         private float directionChangeTime;
         private readonly float characterVelocity = 3f;
@@ -36,12 +37,14 @@ namespace WarriorOrigins
             latestDirectionChangeTime = 0f;
             CalcuateNewMovementVector();
             rb = GetComponent<Rigidbody2D>();
+            
         }
 
         void Update()
         {
             AIAnimation();
             AIMovement();
+            attackCooldown = Random.Range(.5f, 1f);
         }
 
         void FixedUpdate()
@@ -50,13 +53,12 @@ namespace WarriorOrigins
             {
                 directionChangeTime = Random.Range(1, 3);
 
-                //if the changeTime was reached, calculate a new movement vector
                 if (Time.time - latestDirectionChangeTime > directionChangeTime)
                 {
                     latestDirectionChangeTime = Time.time;
                     CalcuateNewMovementVector();
                 }
-                //Enemy moving
+
                 isRunning = true;
                 rb.MovePosition((Vector2)transform.position + (movementPerSecond * Time.deltaTime));
             }
@@ -70,18 +72,18 @@ namespace WarriorOrigins
         //AI Patrolling
         void AIMovement()
         {
-            float distanceFromPlayer = Vector2.Distance(transform.position, target.player.transform.position);
+            float distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
 
             if (distanceFromPlayer < agroRange)
             {
                 if (distanceFromPlayer > minimumDistance)
                 {
 
-                    if (transform.position.x >= target.player.transform.position.x && rightFace)
+                    if (transform.position.x >= LevelGenerator.Instance.player.transform.position.x && rightFace)
                     {
                         Flip();
                     }
-                    else if (transform.position.x <= target.player.transform.position.x && !rightFace)
+                    else if (transform.position.x <= LevelGenerator.Instance.player.transform.position.x && !rightFace)
                     {
                         Flip();
                     }
@@ -92,12 +94,22 @@ namespace WarriorOrigins
                 }
                 else 
                 {
-                    //attack animation
-                    animator.SetTrigger("isAttacking");
-
+                    //attack sequence
                     isFollowingPlayer = false;
                     isRunning = false;
                     isPatrolling = false;
+                    isAttacking = true;
+
+                    if (actCooldown <= 0 && isAttacking)
+                    {
+                        
+                        actCooldown = attackCooldown;
+                        animator.SetTrigger("isAttacking");
+                    }
+                    else
+                    {
+                        actCooldown -= Time.deltaTime;
+                    }
                 }
             }
             else
@@ -109,13 +121,25 @@ namespace WarriorOrigins
 
         void FollowPlayer()
         {
-            Vector3 direction = target.player.transform.position - transform.position;
+            Vector3 direction = LevelGenerator.Instance.player.transform.position - transform.position;
             direction.Normalize();
             movement = direction;
             rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
         }
 
-        
+        void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (isAttacking)
+            {
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    Debug.Log("Player was hit with " + attackDamage + " damage!");
+                    collision.gameObject.GetComponent<PlayerManager>().TakeDamage(attackDamage);
+                    return;
+                }
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == ("Walls") || collision.gameObject.tag == ("Enemy"))

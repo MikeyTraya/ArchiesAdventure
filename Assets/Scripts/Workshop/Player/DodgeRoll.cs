@@ -6,11 +6,12 @@ namespace WarriorOrigins
     public class DodgeRoll : MonoBehaviour
     {
         private Rigidbody2D rb;
-
         private Animator animator;
-
         public GameObject player;
 
+        public float delayBeforeInvinsible = 0.3f;
+        public float invisibleDuration = 0.7f;
+        
         Vector2 movement;
         Vector3 lastMoveDirection;
 
@@ -19,7 +20,6 @@ namespace WarriorOrigins
         public float pushAmount;
 
         public bool Roll;
-
 
         private void Start()
         {
@@ -41,11 +41,12 @@ namespace WarriorOrigins
 
             Roll = Input.GetKeyDown(KeyCode.Space);
             
-            if (actCooldown <= 0)
+            if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > 15)
             {
                 animator.ResetTrigger("isDodging");
                 if (Roll)
                 {
+                    StaminaBar.Instance.UseStamina(15);
                     Dodge();
                 }
                 else
@@ -57,17 +58,15 @@ namespace WarriorOrigins
             else
             {
                 actCooldown -= Time.deltaTime;
-                
             }
         }
 
         private void Dodge()
         {
             actCooldown = dodgeCooldown;
+            PlayerManager.Instance.Invinsible(delayBeforeInvinsible, invisibleDuration);
             rb.AddForce(lastMoveDirection * (pushAmount + Time.deltaTime), ForceMode2D.Force);
-
             animator.SetTrigger("isDodging");
-
             player.transform.GetChild(0).gameObject.SetActive(true);
             player.transform.GetChild(1).gameObject.SetActive(false);
         }

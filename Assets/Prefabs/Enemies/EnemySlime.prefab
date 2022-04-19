@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 6678308964131075916}
   - component: {fileID: 6678308965240989752}
   - component: {fileID: 6678308965240989759}
-  - component: {fileID: 6678308965240989757}
+  - component: {fileID: 1681554955850421266}
   - component: {fileID: 6678308965240989756}
-  - component: {fileID: 6678308965240989758}
   - component: {fileID: 6595670453307770644}
-  - component: {fileID: 1831223586}
+  - component: {fileID: 6665274009710080079}
   m_Layer: 8
   m_Name: EnemySlime
   m_TagString: Enemy
@@ -107,8 +106,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &6678308965240989757
-BoxCollider2D:
+--- !u!70 &1681554955850421266
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,19 +119,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000047683716, y: -0.16130769}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.78683376, y: 0.61006904}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.0072508072, y: -0.17401795}
+  m_Size: {x: 1.0290023, y: 0.79216284}
+  m_Direction: 1
 --- !u!50 &6678308965240989756
 Rigidbody2D:
   serializedVersion: 4
@@ -145,30 +134,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDrag: 0
+  m_Mass: 1
+  m_LinearDrag: 0.05
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c1b871f9cc6a6fa4e9895fce408740be, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6678308965240989758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6678308965240989746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058a2c4c327bf5942a6a8d155a421164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  flashLength: 0.5
 --- !u!114 &6595670453307770644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,23 +156,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  target: {fileID: 0}
   minimumDistance: 1.5
   agroRange: 10
   isPatrolling: 0
---- !u!58 &1831223586
-CircleCollider2D:
+--- !u!114 &6665274009710080079
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6678308965240989746}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.02, y: -0.15}
-  serializedVersion: 2
-  m_Radius: 0.55
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058a2c4c327bf5942a6a8d155a421164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
+  flashLength: 0.5

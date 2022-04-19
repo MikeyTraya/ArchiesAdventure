@@ -16,13 +16,21 @@ namespace WarriorOrigins
         bool isRunning = false;
 
         Animator animator;
+        private void OnEnable()
+        {
+            PlayerManager.OnPlayerDeath += DisablePlayerMovement;
+        }
 
+        private void OnDisable()
+        {
+            PlayerManager.OnPlayerDeath -= DisablePlayerMovement;
+        }
 
         void Start()
         {
             animator = GetComponent<Animator>();
             cam = Camera.main;
-            
+            EnablePlayerMovement();
         }
 
         void Update()
@@ -79,5 +87,18 @@ namespace WarriorOrigins
         {
             animator.SetBool("isRunning", isRunning);
         }
+
+        private void DisablePlayerMovement()
+        {
+            animator.enabled = false;
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+
+        private void EnablePlayerMovement()
+        {
+            animator.enabled = true;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+
     }
 }

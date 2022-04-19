@@ -7,7 +7,6 @@ namespace WarriorOrigins
     public class EnemyFollowAirborn : MonoBehaviour
     {
         public float speed;
-        public LevelGenerator target;
         public float minimumDistance;
         public float agroRange;
 
@@ -17,6 +16,7 @@ namespace WarriorOrigins
 
         Animator animator;
 
+        bool rightFace = true;
         bool isMoving = false;
         bool isFollowingPlayer = false;
 
@@ -42,12 +42,21 @@ namespace WarriorOrigins
 
         void AIMovement()
         {
-            float distanceFromPlayer = Vector2.Distance(transform.position, target.player.transform.position);
+            float distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
 
             if (distanceFromPlayer < agroRange)
             {
                 if (distanceFromPlayer > minimumDistance)
                 {
+                    if (transform.position.x >= LevelGenerator.Instance.player.transform.position.x && rightFace)
+                    {
+                        Flip();
+                    }
+                    else if (transform.position.x <= LevelGenerator.Instance.player.transform.position.x && !rightFace)
+                    {
+                        Flip();
+                    }
+
                     isFollowingPlayer = true;
                 }
                 else
@@ -55,20 +64,22 @@ namespace WarriorOrigins
                     isFollowingPlayer = false;
                 }
             }
-            else
-            {
-                isFollowingPlayer = false;
-                isMoving = false;
-            }
+            
         }
 
         void FollowPlayer()
         {
             isMoving = true;
-            Vector3 direction = target.player.transform.position - transform.position;
+            Vector3 direction = LevelGenerator.Instance.player.transform.position - transform.position;
             direction.Normalize();
             movement = direction;
-            transform.Translate(movement * speed * Time.deltaTime);
+            rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
+        }
+
+        void Flip()
+        {
+            rightFace = !rightFace;
+            transform.Rotate(0f, 180f, 0f);
         }
 
         void AIAnimation()

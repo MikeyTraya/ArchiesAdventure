@@ -20,6 +20,10 @@ namespace WarriorOrigins
 
         public GameObject player;
 
+        public static LevelGenerator Instance;
+
+        void Awake() => Instance = this;
+
         void Start()
         {
             randomNumber = Random.Range(0, map.Length);

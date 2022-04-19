@@ -18,25 +18,35 @@ namespace WarriorOrigins
             Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-
-            effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            Destroy(effect, .3f);
-            Destroy(gameObject);
-
-        }
-
         void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.transform.GetComponent<Transform>().CompareTag("Enemy"))
+            Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                collision.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
                 effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 Destroy(effect, .3f);
                 Destroy(gameObject);
                 return;
             }
+            if (collision.gameObject.CompareTag("EnemyStationary"))
+            {
+                collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
+                effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, .3f);
+                Destroy(gameObject);
+                return;
+            }
+            
+            if (collision.gameObject.CompareTag("Walls"))
+            {
+                effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, .3f);
+                Destroy(gameObject);
+            }
+
+            
+            return;
         }
     }
 }

@@ -8,17 +8,22 @@ namespace WarriorOrigins
     {
         public int maxHealth;
         public int currentHealth;
-     
+
+        public GameObject floatingText;
+
         private bool flashActive;
         [SerializeField]
         private float flashLength = 0f;
         private float flashCounter = 0f;
         private SpriteRenderer enemySprite;
 
+        CapsuleCollider2D capsuleCollider;
+
         private void Start()
         {
             enemySprite = GetComponent<SpriteRenderer>();
             currentHealth = maxHealth;
+            capsuleCollider = GetComponent<CapsuleCollider2D>();
         }
 
         private void Update()
@@ -57,11 +62,12 @@ namespace WarriorOrigins
                 {
                     enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1f);
                     flashActive = false;
+                    capsuleCollider.enabled = true;
                 }
                 flashCounter -= Time.deltaTime;
             }
 
-            if (currentHealth == 0)
+            if (currentHealth <= 0)
             {
                 Destroy(gameObject);
             }
@@ -69,25 +75,35 @@ namespace WarriorOrigins
 
         public void TakeDamage(int damage)
         {
+            GameObject points = Instantiate(floatingText, transform.position, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
             currentHealth -= damage;
             flashActive = true;
+            capsuleCollider.enabled = false;
             flashCounter = flashLength;
             Debug.Log("Damage Taken");
         }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.tag == "Bullet")
+            if (collision.gameObject.CompareTag("Bullet"))
             {
-                Vector2 difference = transform.position - collision.transform.position;
+                Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
+                Vector2 difference = (transform.position - collision.transform.position).normalized;
                 transform.position = new Vector2(transform.position.x + difference.x,
-                    transform.position.y + difference.y);
+                transform.position.y + difference.y);
+                return;
             }
-            if (collision.tag == "Sword")
+
+            if (collision.gameObject.CompareTag("Sword"))
             {
-                Vector2 difference = transform.position - collision.transform.position;
+                Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
+                Vector2 difference = (transform.position - collision.transform.position).normalized;
                 transform.position = new Vector2(transform.position.x + difference.x,
-                    transform.position.y + difference.y);
+                transform.position.y + difference.y);
+                return;
             }
+            return;
         }
     }
 }

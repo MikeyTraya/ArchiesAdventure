@@ -7,7 +7,6 @@ namespace WarriorOrigins
     public class EnemyFollow : MonoBehaviour
     {
         public float speed;
-        public LevelGenerator target;
         public float minimumDistance;
         public float agroRange;
         private Vector2 movement;
@@ -61,17 +60,17 @@ namespace WarriorOrigins
 
         void AIMovement()
         {
-            float distanceFromPlayer = Vector2.Distance(transform.position, target.player.transform.position);
+            float distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
 
             if (distanceFromPlayer < agroRange)
             {
                 if (distanceFromPlayer > minimumDistance)
                 {
-                    if (transform.position.x >= target.player.transform.position.x && rightFace)
+                    if (transform.position.x >= LevelGenerator.Instance.player.transform.position.x && rightFace)
                     {
                         Flip();
                     }
-                    else if (transform.position.x <= target.player.transform.position.x && !rightFace)
+                    else if (transform.position.x <= LevelGenerator.Instance.player.transform.position.x && !rightFace)
                     {
                         Flip();
                     }
@@ -95,7 +94,7 @@ namespace WarriorOrigins
 
         void FollowPlayer()
         {
-            Vector3 direction = target.player.transform.position - transform.position;
+            Vector3 direction = LevelGenerator.Instance.player.transform.position - transform.position;
             direction.Normalize();
             movement = direction;
             rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
