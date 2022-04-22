@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7242720712749283491
 Transform:
   m_ObjectHideFlags: 0
@@ -155,10 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d8bcdb263496a4fb446f0ba2b90356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  target: {fileID: 862020522239043377, guid: a8dbecdcfb0dd7c489bc5f305bda9a66, type: 3}
-  minimumDistance: 1.5
+  speed: 8
+  minimumDistance: 4
   agroRange: 10
+  attackCooldown: 0.5
+  damage: 1
+  enemyBulletPrefab: {fileID: 3222481601739932710, guid: ff826ad3fefaed64593c8f90e98098e1, type: 3}
 --- !u!114 &6300555203921418382
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: -182279622263907591
     second: RangeWeapons_3
+  - first:
+      213: -5566864221138291262
+    second: RangeWeapons_4
+  - first:
+      213: 1854299472711540785
+    second: RangeWeapons_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +188,48 @@ TextureImporter:
       bones: []
       spriteID: 9fada2936a9687df0800000000000000
       internalID: -182279622263907591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWeapons_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 70
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c578324c768eb2b0800000000000000
+      internalID: -5566864221138291262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWeapons_5
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 75
+        width: 5
+        height: 1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1306a22cb8bcbb910800000000000000
+      internalID: 1854299472711540785
       vertices: []
       indices: 
       edges: []

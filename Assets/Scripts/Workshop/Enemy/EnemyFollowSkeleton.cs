@@ -11,7 +11,7 @@ namespace WarriorOrigins
         public float agroRange;
         public float attackCooldown;
         private float actCooldown;
-        public int attackDamage;
+        public int damage;
 
         Animator animator;
         Rigidbody2D rb;
@@ -91,6 +91,7 @@ namespace WarriorOrigins
                     isFollowingPlayer = true;
                     isRunning = true;
                     isPatrolling = false;
+                    isAttacking = false;
                 }
                 else 
                 {
@@ -116,6 +117,7 @@ namespace WarriorOrigins
             {
                 isFollowingPlayer = false;
                 isPatrolling = true;
+                isAttacking = false;
             }
         }
 
@@ -133,8 +135,7 @@ namespace WarriorOrigins
             {
                 if (collision.gameObject.CompareTag("Player"))
                 {
-                    Debug.Log("Player was hit with " + attackDamage + " damage!");
-                    collision.gameObject.GetComponent<PlayerManager>().TakeDamage(attackDamage);
+                    PlayerGameUpdate.Instance.TakeDamage(damage);
                     return;
                 }
             }
@@ -142,11 +143,12 @@ namespace WarriorOrigins
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == ("Walls") || collision.gameObject.tag == ("Enemy"))
+            if (collision.gameObject.CompareTag("Walls") || collision.gameObject.CompareTag("Enemy"))
             {
                 CalcuateNewMovementVector();
             }
         }
+
         void CalcuateNewMovementVector()
         {
             movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;

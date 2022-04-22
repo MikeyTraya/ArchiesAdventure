@@ -44,20 +44,27 @@ namespace WarriorOrigins
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            if (attacking)
+            if (collision != null)
             {
-                if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<CapsuleCollider2D>())
+                if (attacking)
                 {
-                    collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    return;
-                }
+                    if (collision.gameObject.CompareTag("Enemy"))
+                    {
+                        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    }
 
-                if (collision.gameObject.CompareTag("EnemyStationary") && collision.gameObject.GetComponent<CapsuleCollider2D>())
-                {
-                    collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
-                    return;
+                    if (collision.gameObject.CompareTag("EnemyStationary"))
+                    {
+                        collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
+                    }
+
                 }
             }
+            else
+            {
+                return;
+            }
+            
         }
     }
 }

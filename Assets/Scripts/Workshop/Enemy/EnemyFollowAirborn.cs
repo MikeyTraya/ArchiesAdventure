@@ -9,6 +9,9 @@ namespace WarriorOrigins
         public float speed;
         public float minimumDistance;
         public float agroRange;
+        public float attackCooldown;
+        private float actCooldown;
+        public int damage;
 
         private Vector2 movement;
 
@@ -19,6 +22,9 @@ namespace WarriorOrigins
         bool rightFace = true;
         bool isMoving = false;
         bool isFollowingPlayer = false;
+        bool isAttacking = false;
+
+        public GameObject enemyBulletPrefab;
 
         void Start()
         {
@@ -61,10 +67,29 @@ namespace WarriorOrigins
                 }
                 else
                 {
+                    //attack sequence
                     isFollowingPlayer = false;
+                    isAttacking = true;
+
+                    if (actCooldown <= 0 && isAttacking)
+                    {
+                        actCooldown = attackCooldown;
+                        GameObject bullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        actCooldown -= Time.deltaTime;
+                    }
                 }
             }
-            
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                PlayerGameUpdate.Instance.TakeDamage(damage);
+            }
         }
 
         void FollowPlayer()

@@ -8,19 +8,31 @@ namespace WarriorOrigins
     {
         public GameObject gameOverMenu;
 
+        Animator animator;
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
         private void OnEnable()
         {
+            
             PlayerManager.OnPlayerDeath += EnableGameOverMenu;
+            
         }
 
         private void OnDisable()
         {
+            animator.SetBool("isOpen", false);
             PlayerManager.OnPlayerDeath -= EnableGameOverMenu;
         }
 
         public void EnableGameOverMenu()
         {
+            animator.SetBool("isOpen", true);
             gameOverMenu.SetActive(true);
+            
         }
     }
 }

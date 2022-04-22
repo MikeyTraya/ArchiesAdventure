@@ -9,12 +9,14 @@ namespace WarriorOrigins
         public float speed;
         public float minimumDistance;
         public float agroRange;
+        public int damage;
         private Vector2 movement;
 
         Rigidbody2D rb;
 
         bool rightFace = true;
         bool isFollowingPlayer = false;
+        bool isAttacking = true;
 
         //AI
         public bool isPatrolling = false;
@@ -62,7 +64,7 @@ namespace WarriorOrigins
         {
             float distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
 
-            if (distanceFromPlayer < agroRange)
+            if (distanceFromPlayer <= agroRange)
             {
                 if (distanceFromPlayer > minimumDistance)
                 {
@@ -106,7 +108,28 @@ namespace WarriorOrigins
             if (collision.gameObject.tag == ("Walls") || collision.gameObject.tag == ("Enemy"))
             {
                 CalcuateNewMovementVector();
+                return;
             }
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                if (isAttacking)
+                {
+                    StartCoroutine(WaitForSeconds());
+                    PlayerGameUpdate.Instance.TakeDamage(damage);
+                }
+                    
+            }
+        }
+
+        IEnumerator WaitForSeconds()
+        {
+            isAttacking = false;
+            yield return new WaitForSecondsRealtime(1);
+            isAttacking = true;
         }
 
         void CalcuateNewMovementVector()

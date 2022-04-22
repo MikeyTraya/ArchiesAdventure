@@ -6,7 +6,10 @@ namespace WarriorOrigins
     public class WeaponSwitching : MonoBehaviour
     {
 
-        private int selectedWeapon = 0;
+        public int selectedWeapon = 0;
+
+        public float switchCooldown = 1f;
+        private float actCooldown;
 
         void Start()
         {
@@ -32,12 +35,21 @@ namespace WarriorOrigins
                     selectedWeapon--;
             }
 
-            if (previousSelectedWeapon != selectedWeapon)
-                SelectWeapon();
+            if (actCooldown <= 0)
+            {
+                if (previousSelectedWeapon != selectedWeapon)
+                    SelectWeapon();
+            }
+            else
+            {
+                actCooldown -= Time.fixedDeltaTime;
+            }
+            
         }
 
         private void SelectWeapon()
         {
+            actCooldown = switchCooldown;
             int i = 0;
             foreach (Transform weapon in transform)
             {

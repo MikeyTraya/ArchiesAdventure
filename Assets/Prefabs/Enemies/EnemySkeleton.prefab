@@ -468,9 +468,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   minimumDistance: 2
-  agroRange: 10
+  agroRange: 6
   attackCooldown: 0.5
-  attackDamage: 1
+  damage: 1
 --- !u!114 &6068652411771368331
 MonoBehaviour:
   m_ObjectHideFlags: 0

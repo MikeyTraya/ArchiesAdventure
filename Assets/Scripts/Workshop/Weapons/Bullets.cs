@@ -44,8 +44,6 @@ namespace WarriorOrigins
                 Destroy(effect, .3f);
                 Destroy(gameObject);
             }
-
-            
             return;
         }
     }

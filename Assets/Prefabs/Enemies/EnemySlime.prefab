@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6678308964131075916
 Transform:
   m_ObjectHideFlags: 0
@@ -156,8 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  minimumDistance: 1.5
-  agroRange: 10
+  minimumDistance: 0.5
+  agroRange: 6
+  damage: 1
   isPatrolling: 0
 --- !u!114 &6665274009710080079
 MonoBehaviour:
