@@ -38,7 +38,7 @@ namespace WarriorOrigins
             Rigidbody2D player = collision.GetComponent<Rigidbody2D>();
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerGameUpdate.Instance.TakeDamage(damage);
+                GameManager.Instance.TakeDamage(damage);
                 GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 Destroy(effect, 0.3f);
                 Destroy(gameObject);

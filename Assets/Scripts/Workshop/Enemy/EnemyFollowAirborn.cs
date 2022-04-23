@@ -88,7 +88,7 @@ namespace WarriorOrigins
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerGameUpdate.Instance.TakeDamage(damage);
+                GameManager.Instance.TakeDamage(damage);
             }
         }
 

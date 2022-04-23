@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace WarriorOrigins
 {
-    public class PlayerGameUpdate : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         public int health;
         public int numberOfHearts;
@@ -16,7 +16,7 @@ namespace WarriorOrigins
         public Sprite fullHeart;
         public Sprite emptyHearts;
 
-        public static PlayerGameUpdate Instance;
+        public static GameManager Instance;
         void Awake() => Instance = this;
 
         private void Start()

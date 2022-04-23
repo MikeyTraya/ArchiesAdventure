@@ -28,8 +28,8 @@ namespace WarriorOrigins
 
         private void Update()
         {
-            currentHealth = PlayerGameUpdate.Instance.health;
-            maxHealth = PlayerGameUpdate.Instance.numberOfHearts;
+            currentHealth = GameManager.Instance.health;
+            maxHealth = GameManager.Instance.numberOfHearts;
 
             if (flashActive)
             {

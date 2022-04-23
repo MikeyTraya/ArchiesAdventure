@@ -119,7 +119,7 @@ namespace WarriorOrigins
                 if (isAttacking)
                 {
                     StartCoroutine(WaitForSeconds());
-                    PlayerGameUpdate.Instance.TakeDamage(damage);
+                    GameManager.Instance.TakeDamage(damage);
                 }
                     
             }

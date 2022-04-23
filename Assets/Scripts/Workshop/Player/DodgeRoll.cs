@@ -64,7 +64,7 @@ namespace WarriorOrigins
         private void Dodge()
         {
             actCooldown = dodgeCooldown;
-            PlayerGameUpdate.Instance.Invinsible(delayBeforeInvinsible, invisibleDuration);
+            GameManager.Instance.Invinsible(delayBeforeInvinsible, invisibleDuration);
             rb.AddForce(lastMoveDirection * (pushAmount + Time.deltaTime), ForceMode2D.Force);
             animator.SetTrigger("isDodging");
             player.transform.GetChild(0).gameObject.SetActive(true);
