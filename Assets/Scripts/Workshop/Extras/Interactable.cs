@@ -9,14 +9,14 @@ namespace WarriorOrigins
     {
         public bool isInRange;
         public KeyCode interactKey;
+        public KeyCode mouseInteractKey;
         public UnityEvent interactAction;
-        public GameObject dialogBox;
 
         private void Update()
         {
             if (isInRange)
             {
-                if (Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(mouseInteractKey))
                 {
                     interactAction.Invoke();
                 }
@@ -34,20 +34,11 @@ namespace WarriorOrigins
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            try
+            if (collision.gameObject.CompareTag("Player"))
             {
-                if (collision.gameObject.CompareTag("Player"))
-                {
-                    isInRange = false;
-                    Debug.Log(collision + "is not in range");
-                    dialogBox.SetActive(false);
-                }
+                isInRange = false;
+                Debug.Log(collision + "is not in range");
             }
-            catch (System.Exception)
-            {
-                throw;
-            }
-            
         }
     }
 }

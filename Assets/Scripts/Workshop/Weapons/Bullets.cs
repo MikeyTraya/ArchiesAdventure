@@ -20,6 +20,11 @@ namespace WarriorOrigins
 
         void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision == null)
+            {
+                return;
+            }
+
             Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
             if (collision.gameObject.CompareTag("Enemy"))
             {

@@ -16,6 +16,8 @@ namespace WarriorOrigins
         public Sprite fullHeart;
         public Sprite emptyHearts;
 
+        public GameObject player;
+
         public static GameManager Instance;
         void Awake() => Instance = this;
 
@@ -64,7 +66,9 @@ namespace WarriorOrigins
             if (invinsibleAmount <= 0)
             {
                 health -= damage;
-                LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
+                player.GetComponent<PlayerManager>().TakeDamage();
+                //LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
+                
                 Debug.Log("Player was hit");
             }
         }

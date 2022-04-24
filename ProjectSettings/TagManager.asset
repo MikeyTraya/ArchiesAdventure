@@ -50,8 +50,17 @@ TagManager:
   - name: Signs
     uniqueID: 3520993055
     locked: 0
+  - name: Breakable
+    uniqueID: 3380159635
+    locked: 0
   - name: Player
     uniqueID: 691823153
+    locked: 0
+  - name: SFX
+    uniqueID: 1048197119
+    locked: 0
+  - name: UI
+    uniqueID: 3377849895
     locked: 0
   - name: Cursor
     uniqueID: 1992546523
