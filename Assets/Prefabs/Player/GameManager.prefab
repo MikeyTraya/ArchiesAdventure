@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048f4b17083c2704d90e6d5cb9191da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   health: 10
   numberOfHearts: 0
   invinsibleAmount: 0
@@ -59,3 +60,4 @@ MonoBehaviour:
   - {fileID: 0}
   fullHeart: {fileID: 4432793351920879750, guid: f64bfbf36f351a64bb5784c342d59d25, type: 3}
   emptyHearts: {fileID: 5642012044021194823, guid: f64bfbf36f351a64bb5784c342d59d25, type: 3}
+  player: {fileID: 0}

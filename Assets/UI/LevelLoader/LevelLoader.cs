@@ -11,12 +11,12 @@ namespace WarriorOrigins
 
         public float transitionTime = 1f;
 
-        public void LoadNextLevel()
+        public void LoadTutorialLevel()
         {
-            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+            StartCoroutine(LoadTLevel(SceneManager.GetActiveScene().buildIndex + 1));
         }
 
-        IEnumerator LoadLevel(int levelIndex)
+        IEnumerator LoadTLevel(int levelIndex)
         {
             transition.SetTrigger("Start");
 
@@ -25,6 +25,20 @@ namespace WarriorOrigins
             SceneManager.LoadScene(levelIndex);
         }
 
-        
+        public void LoadMainLevel()
+        {
+            StartCoroutine(LoadMLevel("Level1"));
+        }
+
+        IEnumerator LoadMLevel(string levelIndex)
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+
+            SceneManager.LoadScene(levelIndex);
+        }
+
+
     }
 }

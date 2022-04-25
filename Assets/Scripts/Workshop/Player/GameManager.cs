@@ -7,6 +7,14 @@ namespace WarriorOrigins
 {
     public class GameManager : MonoBehaviour
     {
+        public enum State
+        {
+            Tutorial,
+            MainLevels,
+        }
+
+        public State state;
+
         public int health;
         public int numberOfHearts;
 
@@ -65,11 +73,40 @@ namespace WarriorOrigins
         {
             if (invinsibleAmount <= 0)
             {
-                health -= damage;
-                player.GetComponent<PlayerManager>().TakeDamage();
-                //LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
-                
-                Debug.Log("Player was hit");
+                switch (state)
+                {
+                    case State.Tutorial:
+                        health -= damage;
+                        player.GetComponent<PlayerManager>().TakeDamage();
+                        Debug.Log("Player was hit");
+                        break;
+                    case State.MainLevels:
+                        health -= damage;
+                        LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
+                        Debug.Log("Player was hit");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void TakeDamageUndodgeable(int damage)
+        {
+            switch (state)
+            {
+                case State.Tutorial:
+                    health -= damage;
+                    player.GetComponent<PlayerManager>().TakeDamage();
+                    Debug.Log("Player was hit");
+                    break;
+                case State.MainLevels:
+                    health -= damage;
+                    LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
+                    Debug.Log("Player was hit");
+                    break;
+                default:
+                    break;
             }
         }
 

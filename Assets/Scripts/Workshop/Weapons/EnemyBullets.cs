@@ -24,7 +24,6 @@ namespace WarriorOrigins
         private void Update()
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
             if (transform.position == targetPosition)
             {
                 GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);

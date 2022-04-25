@@ -20,12 +20,8 @@ namespace WarriorOrigins
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision == null)
-            {
-                return;
-            }
-
             Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
+
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
@@ -49,7 +45,27 @@ namespace WarriorOrigins
                 Destroy(effect, .3f);
                 Destroy(gameObject);
             }
-            return;
+
+            if (collision.gameObject.CompareTag("Breakables"))
+            {
+                effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, .3f);
+                Destroy(gameObject);
+            }
+
+            if (collision.gameObject.CompareTag("Traps"))
+            {
+                effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, .3f);
+                Destroy(gameObject);
+            }
+
+            if (collision.gameObject.CompareTag("EnemyProjectiles"))
+            {
+                effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, .3f);
+                Destroy(gameObject);
+            }
         }
     }
 }

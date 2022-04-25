@@ -61,6 +61,10 @@ namespace WarriorOrigins
                     collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
                 }
 
+                if (collision.gameObject.CompareTag("EnemyProjectiles"))
+                {
+                    return;
+                }
             }
         }
     }

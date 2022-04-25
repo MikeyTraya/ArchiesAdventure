@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4968497751800558716}
   - component: {fileID: 4968497751800558717}
   - component: {fileID: 4968497751800558718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
+  spriteRenderer: {fileID: 4968497751800558718}
+  spriteMouse1: {fileID: -2996699820976345617, guid: a3bb52a713f57004e81b41d37451b2be, type: 3}
+  spriteMouse2: {fileID: -1860259274665468011, guid: a3bb52a713f57004e81b41d37451b2be, type: 3}
+  gameCursor: {fileID: 1196183537205288015, guid: a3bb52a713f57004e81b41d37451b2be, type: 3}
 --- !u!212 &4968497751800558718
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -83,9 +87,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1992546523
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 1000
-  m_Sprite: {fileID: 1196183537205288015, guid: a3bb52a713f57004e81b41d37451b2be, type: 3}
+  m_Sprite: {fileID: -2996699820976345617, guid: a3bb52a713f57004e81b41d37451b2be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1300,6 +1300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 1590556867925110078}
+  minimap: {fileID: 2064145303502081750}
 --- !u!95 &560922030
 Animator:
   serializedVersion: 3

@@ -7,6 +7,7 @@ namespace WarriorOrigins
     public class DeathManager : MonoBehaviour
     {
         public GameObject gameOverMenu;
+        public GameObject minimap;
 
         Animator animator;
 
@@ -32,7 +33,9 @@ namespace WarriorOrigins
         {
             animator.SetBool("isOpen", true);
             gameOverMenu.SetActive(true);
-            
+            minimap.SetActive(false);
+
+
         }
     }
 }

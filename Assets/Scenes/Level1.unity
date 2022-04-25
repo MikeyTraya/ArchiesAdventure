@@ -368,7 +368,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4087
+    m_Bits: 61431
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1635,6 +1635,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6614246605592117773, guid: e5e508cfd7d7705469103edc65ebfcb0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614246605592117773, guid: e5e508cfd7d7705469103edc65ebfcb0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e508cfd7d7705469103edc65ebfcb0, type: 3}
 --- !u!4 &2004345007 stripped
@@ -1649,6 +1657,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1919696592, guid: caa578af3fbd5cd4baca1adcc428f6bd, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1919696592, guid: caa578af3fbd5cd4baca1adcc428f6bd, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 

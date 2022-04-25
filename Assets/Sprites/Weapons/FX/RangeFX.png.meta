@@ -164,6 +164,18 @@ TextureImporter:
   - first:
       213: -2334890162141305931
     second: RangeFX_53
+  - first:
+      213: 6208545257137201712
+    second: RangeFX_54
+  - first:
+      213: 4623165417566298609
+    second: RangeFX_55
+  - first:
+      213: 4646868185623360183
+    second: RangeFX_56
+  - first:
+      213: 1223373451979308506
+    second: RangeFX_57
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1382,6 +1394,90 @@ TextureImporter:
       bones: []
       spriteID: 5b36300b4cdc89fd0800000000000000
       internalID: -2334890162141305931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeFX_54
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032699f540f292650800000000000000
+      internalID: 6208545257137201712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeFX_55
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f1e8e3e378c82040800000000000000
+      internalID: 4623165417566298609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeFX_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b2f422aefdfc7040800000000000000
+      internalID: 4646868185623360183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeFX_57
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: addbed04cab4af010800000000000000
+      internalID: 1223373451979308506
       vertices: []
       indices: 
       edges: []

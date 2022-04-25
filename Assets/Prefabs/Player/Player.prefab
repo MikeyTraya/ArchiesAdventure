@@ -736,7 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6791004798300988974}
   delayBeforeInvinsible: 0.1
-  invisibleDuration: 0.5
+  invisibleDuration: 0.35
   dodgeCooldown: 1
   pushAmount: 150
   Roll: 0
