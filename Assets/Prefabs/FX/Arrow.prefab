@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 10
+  speed: 20
   resetTime: 5
   lifeTime: 0
   sfx: {fileID: 8842781324726829972, guid: fb990ac8df4805b46b9b4c438fd002dc, type: 3}

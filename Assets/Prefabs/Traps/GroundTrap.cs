@@ -21,7 +21,7 @@ namespace WarriorOrigins
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Sword"))
+            if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("EnemyProjectiles"))
             {
                 return;
             }

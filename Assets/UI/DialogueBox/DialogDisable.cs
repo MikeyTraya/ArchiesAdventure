@@ -6,16 +6,35 @@ namespace WarriorOrigins
 {
     public class DialogDisable : MonoBehaviour
     {
+        public enum State
+        {
+            MainGame,
+            Tutorial,
+        }
+
+        public State state;
+
         [SerializeField] private GameObject dialogBox;
+        public float textDuration;
 
         private void OnEnable()
         {
-            StartCoroutine(HideDialogBox());
+            switch (state)
+            {
+                case State.MainGame:
+                    dialogBox.SetActive(false);
+                    break;
+                case State.Tutorial:
+                    StartCoroutine(HideDialogBox());
+                    break;
+                default:
+                    break;
+            }
         }
 
         IEnumerator HideDialogBox()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(textDuration);
             dialogBox.SetActive(false);
         }
     }

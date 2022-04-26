@@ -37,8 +37,6 @@ namespace WarriorOrigins
             barrel.GetComponent<BoxCollider2D>().enabled = false;
             yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
             
-
-            //Destroy(gameObject);
         }
 
 

@@ -18,6 +18,8 @@ namespace WarriorOrigins
         public int health;
         public int numberOfHearts;
 
+        public int totalCoins;
+
         public float invinsibleAmount;
 
         public Image[] hearts;
@@ -126,6 +128,55 @@ namespace WarriorOrigins
             yield return new WaitForSeconds(delay);
             Debug.Log("Invinsible");
             invinsibleAmount = invinsibleLength;
+        }
+
+        private void OnEnable()
+        {
+            CollectableHearts.OnHeartsCollected += AddHP;
+        }
+
+        private void OnDisable()
+        {
+            CollectableHearts.OnHeartsCollected -= AddHP;
+        }
+
+        public void AddHP()
+        {
+            health++;
+            if (health >= numberOfHearts)
+            {
+                health = numberOfHearts;
+            }
+        }
+
+        public void NotifyPlayer()
+        {
+            switch (state)
+            {
+                case State.Tutorial:
+                    player.transform.GetChild(4).gameObject.SetActive(true);
+                    break;
+                case State.MainLevels:
+                    LevelGenerator.Instance.player.transform.GetChild(4).gameObject.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void DenotifyPlayer()
+        {
+            switch (state)
+            {
+                case State.Tutorial:
+                    player.transform.GetChild(4).gameObject.SetActive(false);
+                    break;
+                case State.MainLevels:
+                    LevelGenerator.Instance.player.transform.GetChild(4).gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }
