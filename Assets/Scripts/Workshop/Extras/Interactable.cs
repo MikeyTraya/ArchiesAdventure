@@ -12,6 +12,7 @@ namespace WarriorOrigins
         public KeyCode mouseInteractKey;
         public UnityEvent interactAction;
 
+
         private void Update()
         {
             if (isInRange)

@@ -6,6 +6,14 @@ namespace WarriorOrigins
 {
     public class EnemyFollow : MonoBehaviour
     {
+        public enum State
+        {
+            MainGame,
+            Tutorial,
+        }
+
+        public State state;
+
         public float speed;
         public float minimumDistance;
         public float agroRange;
@@ -22,9 +30,13 @@ namespace WarriorOrigins
         public bool isPatrolling = false;
         private float latestDirectionChangeTime;
         private float directionChangeTime;
+        private float distanceFromPlayer;
         private readonly float characterVelocity = 1.5f;
         private Vector2 movementDirection;
         private Vector2 movementPerSecond;
+        private Vector3 direction;
+
+        public GameObject player;
 
         void Start()
         {
@@ -62,20 +74,49 @@ namespace WarriorOrigins
 
         void AIMovement()
         {
-            float distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
+            switch (state)
+            {
+                case State.MainGame:
+                    distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
+                    break;
+                case State.Tutorial:
+                    distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
+                    break;
+                default:
+                    break;
+            }
+            
 
             if (distanceFromPlayer <= agroRange)
             {
                 if (distanceFromPlayer > minimumDistance)
                 {
-                    if (transform.position.x >= LevelGenerator.Instance.player.transform.position.x && rightFace)
+                    switch (state)
                     {
-                        Flip();
+                        case State.MainGame:
+                            if (transform.position.x >= LevelGenerator.Instance.player.transform.position.x && rightFace)
+                            {
+                                Flip();
+                            }
+                            else if (transform.position.x <= LevelGenerator.Instance.player.transform.position.x && !rightFace)
+                            {
+                                Flip();
+                            }
+                            break;
+                        case State.Tutorial:
+                            if (transform.position.x >= player.transform.position.x && rightFace)
+                            {
+                                Flip();
+                            }
+                            else if (transform.position.x <= player.transform.position.x && !rightFace)
+                            {
+                                Flip();
+                            }
+                            break;
+                        default:
+                            break;
                     }
-                    else if (transform.position.x <= LevelGenerator.Instance.player.transform.position.x && !rightFace)
-                    {
-                        Flip();
-                    }
+                    
 
                     isFollowingPlayer = true;
                     isPatrolling = false;
@@ -96,10 +137,23 @@ namespace WarriorOrigins
 
         void FollowPlayer()
         {
-            Vector3 direction = LevelGenerator.Instance.player.transform.position - transform.position;
-            direction.Normalize();
-            movement = direction;
-            rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
+            switch (state)
+            {
+                case State.MainGame:
+                    direction = LevelGenerator.Instance.player.transform.position - transform.position;
+                    direction.Normalize();
+                    movement = direction;
+                    rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
+                    break;
+                case State.Tutorial:
+                    direction = player.transform.position - transform.position;
+                    direction.Normalize();
+                    movement = direction;
+                    rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));
+                    break;
+                default:
+                    break;
+            }
         }
 
         //AI Patrolling
@@ -114,15 +168,32 @@ namespace WarriorOrigins
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            switch (state)
             {
-                if (isAttacking)
-                {
-                    StartCoroutine(WaitForSeconds());
-                    GameManager.Instance.TakeDamage(damage);
-                }
-                    
+                case State.MainGame:
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        if (isAttacking)
+                        {
+                            StartCoroutine(WaitForSeconds());
+                            GameManager.Instance.TakeDamage(damage);
+                        }
+                    }
+                    break;
+                case State.Tutorial:
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        if (isAttacking && GameManager.Instance.health != 1)
+                        {
+                            StartCoroutine(WaitForSeconds());
+                            GameManager.Instance.TakeDamage(damage);
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
+            
         }
 
         IEnumerator WaitForSeconds()

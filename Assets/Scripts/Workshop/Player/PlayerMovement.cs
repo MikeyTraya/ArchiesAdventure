@@ -35,8 +35,12 @@ namespace WarriorOrigins
 
         void Update()
         {
-            PlayerInput();
-            PlayerAnimation();
+            if (!PauseMenu.isPause)
+            {
+                PlayerInput();
+                PlayerAnimation();
+            }
+            
         }
 
         void FixedUpdate()

@@ -86,15 +86,6 @@ namespace WarriorOrigins
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Bullet"))
-            {
-                Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
-                Vector2 difference = (transform.position - collision.transform.position).normalized;
-                transform.position = new Vector2(transform.position.x + difference.x,
-                transform.position.y + difference.y);
-                return;
-            }
-
             if (collision.gameObject.CompareTag("Sword"))
             {
                 Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();

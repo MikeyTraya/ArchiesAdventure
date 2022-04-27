@@ -16,6 +16,7 @@ namespace WarriorOrigins
 
         [SerializeField] private GameObject dialogBox;
         public float textDuration;
+        public GameObject thingsToHide;
 
         private void OnEnable()
         {
@@ -25,7 +26,11 @@ namespace WarriorOrigins
                     dialogBox.SetActive(false);
                     break;
                 case State.Tutorial:
-                    StartCoroutine(HideDialogBox());
+                    if (thingsToHide != null)
+                    {
+                        thingsToHide.SetActive(false);
+                        StartCoroutine(HideDialogBox());
+                    }
                     break;
                 default:
                     break;

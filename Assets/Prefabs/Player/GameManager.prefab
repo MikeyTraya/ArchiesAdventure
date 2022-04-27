@@ -46,6 +46,8 @@ MonoBehaviour:
   state: 0
   health: 10
   numberOfHearts: 0
+  totalCoins: 0
+  totalShovels: 0
   invinsibleAmount: 0
   hearts:
   - {fileID: 0}

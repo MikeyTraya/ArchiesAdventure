@@ -253,8 +253,6 @@ MonoBehaviour:
   muzzleFX: {fileID: 9219020142920193769, guid: 3af4feb80096762468ffe1d6293e05f1, type: 3}
   bulletForce: 30
   shootCooldown: 0.3
-  maxAmmo: 100
-  reloadTime: 2
 --- !u!1 &396051249834268865
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
-  switchCooldown: 2
 --- !u!1 &2451454045277397302
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,8 +735,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6718531}
-  m_Size: {x: 0.6683496, y: 0.9291259}
+  m_Offset: {x: 0, y: -0.85}
+  m_Size: {x: 0.6683496, y: 0.6683496}
   m_Direction: 0
 --- !u!114 &7676831968039223234
 MonoBehaviour:
@@ -787,7 +784,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
-  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
   flashLength: 0.5
 --- !u!114 &1995475602
 MonoBehaviour:

@@ -19,6 +19,7 @@ namespace WarriorOrigins
         public int numberOfHearts;
 
         public int totalCoins;
+        public int totalShovels;
 
         public float invinsibleAmount;
 
@@ -147,6 +148,16 @@ namespace WarriorOrigins
             {
                 health = numberOfHearts;
             }
+        }
+
+        public void ShovelAdd()
+        {
+            totalShovels++;
+        }
+
+        public void ShovelUse()
+        {
+            totalShovels--;
         }
 
         public void NotifyPlayer()

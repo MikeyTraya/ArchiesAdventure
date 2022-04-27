@@ -7,9 +7,13 @@ namespace WarriorOrigins
 {
     public class Collectables : MonoBehaviour
     {
-        public GameObject Coins;
+        //public GameObject Coins;
         public TMP_Text totalCoins;
         public int coinCount;
+
+        //public GameObject Shovels;
+        public TMP_Text totalShovels;
+        public int shovelsCount;
 
         private void OnEnable()
         {
@@ -24,8 +28,14 @@ namespace WarriorOrigins
         public void AddCoin()
         {
             coinCount++;
-            totalCoins.text = " "+coinCount+"x";
+            totalCoins.text = " " + coinCount + "x";
             GameManager.Instance.totalCoins = coinCount;
+        }
+
+        public void Update()
+        {
+            shovelsCount = GameManager.Instance.totalShovels;
+            totalShovels.text = " " + shovelsCount + "x";
         }
     }
 }

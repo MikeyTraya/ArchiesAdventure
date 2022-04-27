@@ -34,8 +34,6 @@ namespace WarriorOrigins
             animator.SetBool("isOpen", true);
             gameOverMenu.SetActive(true);
             minimap.SetActive(false);
-
-
         }
     }
 }

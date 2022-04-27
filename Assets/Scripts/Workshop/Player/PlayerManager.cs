@@ -12,8 +12,6 @@ namespace WarriorOrigins
         public int maxHealth;
         public int currentHealth;
 
-        public GameObject floatingText;
-
         private bool flashActive;
         [SerializeField]
         private float flashLength = 0.5f;
@@ -81,17 +79,5 @@ namespace WarriorOrigins
             flashCounter = flashLength;
 
         }
-
-        /*private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                Rigidbody2D player = collision.GetComponent<Rigidbody2D>();
-                Vector2 difference = (transform.position - collision.transform.position).normalized;
-                transform.position = new Vector2(transform.position.x + difference.x,
-                transform.position.y + difference.y);
-                return;
-            }
-        }*/
     }
 }

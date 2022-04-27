@@ -21,23 +21,26 @@ namespace WarriorOrigins
         }
         void Update()
         {
-            if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > 15)
+            if (!PauseMenu.isPause)
             {
-                if (Input.GetButton("Fire1"))
+                if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > 15)
                 {
-                    StaminaBar.Instance.UseStamina(15);
-                    attacking = true;
-                    actCooldown = attackCooldown;
-                    animator.SetTrigger("isAttacking");
+                    if (Input.GetButton("Fire1"))
+                    {
+                        StaminaBar.Instance.UseStamina(15);
+                        attacking = true;
+                        actCooldown = attackCooldown;
+                        animator.SetTrigger("isAttacking");
+                    }
+                    else
+                    {
+                        attacking = false;
+                    }
                 }
                 else
                 {
-                    attacking = false;
+                    actCooldown -= Time.deltaTime;
                 }
-            }
-            else
-            {
-                actCooldown -= Time.deltaTime;
             }
             
         }

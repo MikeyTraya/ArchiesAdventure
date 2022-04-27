@@ -11,6 +11,8 @@ namespace WarriorOrigins
 
         public GameObject barrel;
 
+        public int durability;
+
         private void Awake()
         {
             particle = GetComponentInChildren<ParticleSystem>();
@@ -20,12 +22,21 @@ namespace WarriorOrigins
         {
             if (collision.gameObject.CompareTag("Sword"))
             {
-                StartCoroutine(Break());
+                durability--;
+                if (durability <= 0)
+                {
+                    StartCoroutine(Break());
+                }
+                
             }
 
             if (collision.gameObject.CompareTag("Bullet"))
             {
-                StartCoroutine(Break());
+                durability--;
+                if (durability <= 0)
+                {
+                    StartCoroutine(Break());
+                }
             }
         }
 

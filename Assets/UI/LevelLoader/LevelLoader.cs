@@ -27,7 +27,7 @@ namespace WarriorOrigins
 
         public void LoadMainLevel()
         {
-            StartCoroutine(LoadMLevel("Level1"));
+            StartCoroutine(LoadMLevel("PlayLevel"));
         }
 
         IEnumerator LoadMLevel(string levelIndex)

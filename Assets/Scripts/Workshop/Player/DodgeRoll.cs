@@ -29,11 +29,13 @@ namespace WarriorOrigins
 
         private void Update()
         {
-            float x = Input.GetAxisRaw("Horizontal");
-            float y = Input.GetAxisRaw("Vertical");
-
-            movement = new Vector2(x, y).normalized;
-            
+            if (!PauseMenu.isPause)
+            {
+                float x = Input.GetAxisRaw("Horizontal");
+                float y = Input.GetAxisRaw("Vertical");
+                movement = new Vector2(x, y).normalized;
+            }
+     
             if (movement.x != 0 || movement.y != 0)
             {
                 lastMoveDirection = movement;
