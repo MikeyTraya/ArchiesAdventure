@@ -31,8 +31,6 @@ namespace WarriorOrigins
                 StartCoroutine(ActivateGroundTrap());
                 active = true;
             }
-
-            
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -47,7 +45,10 @@ namespace WarriorOrigins
                 triggered = true;
                 yield return new WaitForSeconds(activationDelay);
                 animator.SetBool("isSomethingHere", true);
-                GameManager.Instance.TakeDamage(damage);
+                if (GameManager.Instance.health != 1)
+                {
+                    GameManager.Instance.TakeDamage(damage);
+                }
 
                 yield return new WaitForSeconds(activeTime);
                 triggered = false;

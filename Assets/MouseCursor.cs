@@ -14,16 +14,11 @@ namespace WarriorOrigins
 
         public State state;
 
-        public SpriteRenderer spriteRenderer;
-        public Sprite spriteMouse1;
-        public Sprite spriteMouse2;
-        public Sprite gameCursor;
+        [SerializeField] private Texture2D gameCursorTexture;
+        [SerializeField] private Texture2D mainMenuCursorTexture0;
+        [SerializeField] private Texture2D mainMenuCursorTexture1;
 
-        void Start()
-        {
-            Cursor.visible = false;
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+        private Vector2 cursorHotspot;
 
         void Update()
         {
@@ -32,31 +27,29 @@ namespace WarriorOrigins
                 case State.MainMenu:
                     if (Input.GetMouseButtonDown(0))
                     {
-                        if (spriteRenderer.sprite != spriteMouse2)
+                        if (mainMenuCursorTexture0 != mainMenuCursorTexture1)
                         {
-                            spriteRenderer.sprite = spriteMouse2;
+                            cursorHotspot = new Vector2(mainMenuCursorTexture1.width / 2, mainMenuCursorTexture1.height / 2);
+                            Cursor.SetCursor(mainMenuCursorTexture1, cursorHotspot, CursorMode.Auto);
                         }
                         else
                         {
-                            spriteRenderer.sprite = spriteMouse1;
+                            cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 2, mainMenuCursorTexture0.height / 2);
+                            Cursor.SetCursor(mainMenuCursorTexture0, cursorHotspot, CursorMode.Auto);
                         }
                     }else if (Input.GetMouseButtonUp(0))
                     {
-                        spriteRenderer.sprite = spriteMouse1;
+                        cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 2, mainMenuCursorTexture0.height / 2);
+                        Cursor.SetCursor(mainMenuCursorTexture0, cursorHotspot, CursorMode.Auto);
                     }
                     break;
                 case State.Game:
-                    spriteRenderer.sprite = gameCursor;
+                    cursorHotspot = new Vector2(gameCursorTexture.width / 2, gameCursorTexture.height / 2);
+                    Cursor.SetCursor(gameCursorTexture, cursorHotspot, CursorMode.Auto);
                     break;
                 default:
                     break;
             }
-
-            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = cursorPos;
-
         }
-
-        
     }
 }

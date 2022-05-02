@@ -15,6 +15,11 @@ namespace WarriorOrigins
 
         void Update()
         {
+            if (DodgeRoll.isRolling)
+            {
+                return;
+            }
+
             if (!PauseMenu.isPause)
             {
                 int previousSelectedWeapon = selectedWeapon;

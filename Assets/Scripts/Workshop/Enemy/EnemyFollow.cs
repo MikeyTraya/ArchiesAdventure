@@ -77,7 +77,8 @@ namespace WarriorOrigins
             switch (state)
             {
                 case State.MainGame:
-                    distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
+                    distanceFromPlayer = Vector2.Distance(transform.position, new Vector2(LevelGenerator.Instance.player.transform.position.x,
+                                                                                          LevelGenerator.Instance.player.transform.position.y - .5f));
                     break;
                 case State.Tutorial:
                     distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);

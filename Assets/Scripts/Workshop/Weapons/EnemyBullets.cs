@@ -18,7 +18,8 @@ namespace WarriorOrigins
         {
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
             Physics2D.IgnoreCollision(enemy.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            targetPosition = LevelGenerator.Instance.player.transform.position;
+            targetPosition = new Vector2(LevelGenerator.Instance.player.transform.position.x,
+                LevelGenerator.Instance.player.transform.position.y - .8f);
         }
 
         private void Update()

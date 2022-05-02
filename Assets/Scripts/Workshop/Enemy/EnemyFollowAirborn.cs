@@ -48,7 +48,8 @@ namespace WarriorOrigins
 
         void AIMovement()
         {
-            float distanceFromPlayer = Vector2.Distance(transform.position, LevelGenerator.Instance.player.transform.position);
+            float distanceFromPlayer = Vector2.Distance(transform.position, new Vector2(LevelGenerator.Instance.player.transform.position.x,
+                                                                                        LevelGenerator.Instance.player.transform.position.y - 1));
 
             if (distanceFromPlayer < agroRange)
             {
@@ -95,7 +96,8 @@ namespace WarriorOrigins
         void FollowPlayer()
         {
             isMoving = true;
-            Vector3 direction = LevelGenerator.Instance.player.transform.position - transform.position;
+            Vector3 direction = new Vector2(LevelGenerator.Instance.player.transform.position.x,
+                LevelGenerator.Instance.player.transform.position.y - .5f) - (Vector2)transform.position;
             direction.Normalize();
             movement = direction;
             rb.MovePosition((Vector2)transform.position + (movement * speed * Time.deltaTime));

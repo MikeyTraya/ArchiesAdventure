@@ -13,7 +13,7 @@ namespace WarriorOrigins
         private int maxStamina = 100;
         public int currentStamina;
 
-        private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+        private WaitForSeconds regenTick = new WaitForSeconds(0.01f);
         private Coroutine regen;
 
         public static StaminaBar Instance;
@@ -47,7 +47,7 @@ namespace WarriorOrigins
 
         private IEnumerator RegenStamina()
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(1f);
 
             while(currentStamina < maxStamina)
             {

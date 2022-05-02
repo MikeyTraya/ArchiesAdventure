@@ -15,14 +15,22 @@ namespace WarriorOrigins
 
         public State state;
 
+        [Header("Player Info")]
         public int health;
         public int numberOfHearts;
+        public float invinsibleAmount;
 
+        [Header("CollectedItems Info")]
         public int totalCoins;
         public int totalShovels;
 
-        public float invinsibleAmount;
+        [Header("Weapon Info")]
+        public int currentMeleeWeaponEquipped;
+        public int currentRangeWeaponEquipped;
+        public int rangeWeaponStaminaCost;
+        public int meleeWeaponStaminaCost;
 
+        [Header("Other Info")]
         public Image[] hearts;
         public Sprite fullHeart;
         public Sprite emptyHearts;

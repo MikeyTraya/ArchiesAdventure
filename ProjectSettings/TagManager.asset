@@ -13,6 +13,7 @@ TagManager:
   - Breakables
   - Traps
   - EnemyProjectiles
+  - Guns
   layers:
   - Default
   - TransparentFX
@@ -30,8 +31,8 @@ TagManager:
   - Breakables
   - Traps
   - EnemyProjectiles
-  - 
-  - 
+  - Lighting
+  - Test
   - 
   - 
   - 

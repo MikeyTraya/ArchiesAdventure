@@ -13,6 +13,8 @@ namespace WarriorOrigins
 
         public int damage;
 
+        public int staminaCost = 15;
+
         bool attacking = false;
 
         void Start()
@@ -21,13 +23,15 @@ namespace WarriorOrigins
         }
         void Update()
         {
+            staminaCost = GameManager.Instance.meleeWeaponStaminaCost;
+
             if (!PauseMenu.isPause)
             {
-                if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > 15)
+                if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > staminaCost)
                 {
                     if (Input.GetButton("Fire1"))
                     {
-                        StaminaBar.Instance.UseStamina(15);
+                        StaminaBar.Instance.UseStamina(staminaCost);
                         attacking = true;
                         actCooldown = attackCooldown;
                         animator.SetTrigger("isAttacking");

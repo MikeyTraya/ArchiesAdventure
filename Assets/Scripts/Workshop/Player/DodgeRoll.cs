@@ -21,6 +21,8 @@ namespace WarriorOrigins
 
         public bool Roll;
 
+        public static bool isRolling;
+
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -55,6 +57,7 @@ namespace WarriorOrigins
                 {
                     player.transform.GetChild(0).gameObject.SetActive(false);
                     player.transform.GetChild(1).gameObject.SetActive(true);
+                    isRolling = false;
                 }
             }
             else
@@ -71,6 +74,12 @@ namespace WarriorOrigins
             animator.SetTrigger("isDodging");
             player.transform.GetChild(0).gameObject.SetActive(true);
             player.transform.GetChild(1).gameObject.SetActive(false);
+            isRolling = true;
+
+            
+
+
+
         }
     }
 }

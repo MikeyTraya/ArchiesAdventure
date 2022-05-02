@@ -6,6 +6,15 @@ namespace WarriorOrigins
 {
     public class TrapProjectiles : MonoBehaviour
     {
+
+        public enum State
+        {
+            MainGame,
+            Tutorial,
+        }
+
+        public State state;
+
         public int damage;
         public float speed;
         public float resetTime;
@@ -16,50 +25,99 @@ namespace WarriorOrigins
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            switch (state)
             {
-                GameManager.Instance.TakeDamage(damage);
-                effects = Instantiate(sfx, transform.position, Quaternion.identity);
-                Destroy(effects, .3f);
-                gameObject.SetActive(false);
+                case State.MainGame:
+                    if (collision.gameObject.CompareTag("Player") && GameManager.Instance.invinsibleAmount <= 0)
+                    {
+                        GameManager.Instance.TakeDamage(damage);
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Bullet"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Sword"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Walls"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Breakables"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Traps"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+                    break;
+                case State.Tutorial:
+                    if (collision.gameObject.CompareTag("Player") && GameManager.Instance.health != 1 && GameManager.Instance.invinsibleAmount <= 0)
+                    {
+                        GameManager.Instance.TakeDamage(damage);
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Bullet"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Sword"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Walls"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Breakables"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("Traps"))
+                    {
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+                    break;
+                default:
+                    break;
             }
-
-            if (collision.gameObject.CompareTag("Bullet"))
-            {
-                effects = Instantiate(sfx, transform.position, Quaternion.identity);
-                Destroy(effects, .3f);
-                gameObject.SetActive(false);
-            }
-
-            if (collision.gameObject.CompareTag("Sword"))
-            {
-                effects = Instantiate(sfx, transform.position, Quaternion.identity);
-                Destroy(effects, .3f);
-                gameObject.SetActive(false);
-            }
-
-            if (collision.gameObject.CompareTag("Walls"))
-            {
-                effects = Instantiate(sfx, transform.position, Quaternion.identity);
-                Destroy(effects, .3f);
-                gameObject.SetActive(false);
-            }
-
-            if (collision.gameObject.CompareTag("Breakables"))
-            {
-                effects = Instantiate(sfx, transform.position, Quaternion.identity);
-                Destroy(effects, .3f);
-                gameObject.SetActive(false);
-            }
-
-            if (collision.gameObject.CompareTag("Traps"))
-            {
-                effects = Instantiate(sfx, transform.position, Quaternion.identity);
-                Destroy(effects, .3f);
-                gameObject.SetActive(false);
-            }
-
-
         }
 
         public void ActivateTrap()
