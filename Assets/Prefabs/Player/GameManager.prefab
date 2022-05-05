@@ -47,12 +47,18 @@ MonoBehaviour:
   health: 10
   numberOfHearts: 0
   invinsibleAmount: 0
+  innerVisionRange: {x: 3, y: 3, z: 0}
+  outerVisionRange: {x: 10, y: 10, z: 0}
   totalCoins: 0
   totalShovels: 0
+  totalBombs: 0
   currentMeleeWeaponEquipped: 0
   currentRangeWeaponEquipped: 0
   rangeWeaponStaminaCost: 5
   meleeWeaponStaminaCost: 15
+  meleeDamage: 1
+  rangeDamage: 1
+  bombsDamage: 3
   hearts:
   - {fileID: 0}
   - {fileID: 0}

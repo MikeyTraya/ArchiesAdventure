@@ -35,7 +35,6 @@ namespace WarriorOrigins
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            Rigidbody2D player = collision.GetComponent<Rigidbody2D>();
             if (collision.gameObject.CompareTag("Player"))
             {
                 GameManager.Instance.TakeDamage(damage);
@@ -45,14 +44,13 @@ namespace WarriorOrigins
                 return;
             }
 
-            if (collision.gameObject.CompareTag("Sword"))
+            if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("Bullet"))
             {
                 GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 Destroy(effect, 0.3f);
                 Destroy(gameObject);
                 return;
             }
-            return;
         }
     }
 }

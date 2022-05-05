@@ -6,7 +6,6 @@ namespace WarriorOrigins
 {
     public class TrapProjectiles : MonoBehaviour
     {
-
         public enum State
         {
             MainGame,
@@ -28,6 +27,7 @@ namespace WarriorOrigins
             switch (state)
             {
                 case State.MainGame:
+
                     if (collision.gameObject.CompareTag("Player") && GameManager.Instance.invinsibleAmount <= 0)
                     {
                         GameManager.Instance.TakeDamage(damage);
@@ -70,8 +70,31 @@ namespace WarriorOrigins
                         Destroy(effects, .3f);
                         gameObject.SetActive(false);
                     }
+
+                    if (collision.gameObject.CompareTag("Enemy"))
+                    {
+                        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("EnemyStationary"))
+                    {
+                        collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("EnemyProjectiles"))
+                    {
+                        return;
+                    }
+
                     break;
                 case State.Tutorial:
+
                     if (collision.gameObject.CompareTag("Player") && GameManager.Instance.health != 1 && GameManager.Instance.invinsibleAmount <= 0)
                     {
                         GameManager.Instance.TakeDamage(damage);
@@ -114,6 +137,28 @@ namespace WarriorOrigins
                         Destroy(effects, .3f);
                         gameObject.SetActive(false);
                     }
+
+                    if (collision.gameObject.CompareTag("Enemy"))
+                    {
+                        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("EnemyStationary"))
+                    {
+                        collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
+                        effects = Instantiate(sfx, transform.position, Quaternion.identity);
+                        Destroy(effects, .3f);
+                        gameObject.SetActive(false);
+                    }
+
+                    if (collision.gameObject.CompareTag("EnemyProjectiles"))
+                    {
+                        return;
+                    }
+
                     break;
                 default:
                     break;

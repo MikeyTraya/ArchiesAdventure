@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1984296097459080449}
   - component: {fileID: 224716069768837638}
   - component: {fileID: 1610609980757519551}
+  - component: {fileID: 1627230255}
   m_Layer: 8
   m_Name: EnemyShrooms
   m_TagString: EnemyStationary
@@ -160,6 +161,22 @@ MonoBehaviour:
   currentHealth: 0
   floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
   flashLength: 0.5
+--- !u!114 &1627230255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224716069768837637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de885893fd352e2489db72dc05d1ff9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBullets: 10
+  bulletSpeed: 5
+  bullets: {fileID: 4519881123824137990, guid: e8eca5f761b7486469ffe9fbd590ac9b, type: 3}
+  burstCooldown: 0
 --- !u!1 &1929055670014606304
 GameObject:
   m_ObjectHideFlags: 0

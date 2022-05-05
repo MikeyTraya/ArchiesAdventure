@@ -19,16 +19,22 @@ namespace WarriorOrigins
         public int health;
         public int numberOfHearts;
         public float invinsibleAmount;
+        public Vector3 innerVisionRange;
+        public Vector3 outerVisionRange;
 
         [Header("CollectedItems Info")]
         public int totalCoins;
         public int totalShovels;
+        public int totalBombs;
 
         [Header("Weapon Info")]
         public int currentMeleeWeaponEquipped;
         public int currentRangeWeaponEquipped;
         public int rangeWeaponStaminaCost;
         public int meleeWeaponStaminaCost;
+        public int meleeDamage;
+        public int rangeDamage;
+        public int bombsDamage;
 
         [Header("Other Info")]
         public Image[] hearts;
@@ -166,6 +172,16 @@ namespace WarriorOrigins
         public void ShovelUse()
         {
             totalShovels--;
+        }
+
+        public void CoinUse()
+        {
+            totalCoins--;
+        }
+
+        public void BombsUse()
+        {
+            totalBombs--;
         }
 
         public void NotifyPlayer()

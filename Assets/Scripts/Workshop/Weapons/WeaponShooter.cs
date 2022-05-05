@@ -15,23 +15,29 @@ namespace WarriorOrigins
         public State state;
 
         public Transform bulletHolder;
-
         public GameObject bulletPrefab;
-
         public GameObject muzzleFX;
-
         public float bulletForce = 20f;
-
         public float shootCooldown = 6f;
         private float actCooldown;
 
         public int staminaCost;
 
-        // Update is called once per frame
+        private PlayerMovement playerMovement;
+
+        private void Start()
+        {
+            playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        }
+
         void Update()
         {
-            staminaCost = GameManager.Instance.rangeWeaponStaminaCost;
+            if (!playerMovement.canMove)
+            {
+                return;
+            }
 
+            staminaCost = GameManager.Instance.rangeWeaponStaminaCost;
 
             if (!PauseMenu.isPause)
             {

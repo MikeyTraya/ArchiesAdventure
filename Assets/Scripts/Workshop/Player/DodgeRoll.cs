@@ -8,6 +8,7 @@ namespace WarriorOrigins
         private Rigidbody2D rb;
         private Animator animator;
         public GameObject player;
+        public PlayerMovement playerMovement;
 
         public float delayBeforeInvinsible = 0.3f;
         public float invisibleDuration = 0.7f;
@@ -27,10 +28,17 @@ namespace WarriorOrigins
         {
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
+            playerMovement = GetComponent<PlayerMovement>();
+
         }
 
         private void Update()
         {
+            if (!playerMovement.canMove)
+            {
+                return;
+            }
+
             if (!PauseMenu.isPause)
             {
                 float x = Input.GetAxisRaw("Horizontal");
@@ -75,11 +83,6 @@ namespace WarriorOrigins
             player.transform.GetChild(0).gameObject.SetActive(true);
             player.transform.GetChild(1).gameObject.SetActive(false);
             isRolling = true;
-
-            
-
-
-
         }
     }
 }

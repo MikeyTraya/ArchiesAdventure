@@ -6,17 +6,34 @@ namespace WarriorOrigins
 {
     public class OpenDoor : MonoBehaviour
     {
-        public void Open()
+        public int durability;
+
+        
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (GameManager.Instance.totalShovels <= 0)
+            if (!collision.gameObject.CompareTag("Bombs"))
             {
-                Debug.Log("No shovels detected");
+                return;
             }
-            else
+
+            if (collision.gameObject.CompareTag("Bombs"))
             {
-                GameManager.Instance.ShovelUse();
-                Destroy(gameObject);
+                durability--;
+                if (durability <= 0)
+                {
+                    Break();
+                }
             }
         }
+
+        private void Break()
+        {
+            Destroy(gameObject);
+        }
+
+
+
+
     }
 }

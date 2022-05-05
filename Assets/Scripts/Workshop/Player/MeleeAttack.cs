@@ -7,6 +7,7 @@ namespace WarriorOrigins
     public class MeleeAttack : MonoBehaviour
     {
         public Animator animator;
+        private PlayerMovement playerMovement;
 
         public float attackCooldown = 6f;
         private float actCooldown;
@@ -20,9 +21,16 @@ namespace WarriorOrigins
         void Start()
         {
             animator = GetComponent<Animator>();
+            playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         }
         void Update()
         {
+            if (!playerMovement.canMove)
+            {
+                return;
+            }
+
+            damage = GameManager.Instance.meleeDamage;
             staminaCost = GameManager.Instance.meleeWeaponStaminaCost;
 
             if (!PauseMenu.isPause)

@@ -14,6 +14,8 @@ namespace WarriorOrigins
 
         bool rightFace = true;
         bool isRunning = false;
+        public bool canMove;
+
 
         Animator animator;
         private void OnEnable()
@@ -30,6 +32,7 @@ namespace WarriorOrigins
         {
             animator = GetComponent<Animator>();
             cam = Camera.main;
+            canMove = true; 
             EnablePlayerMovement();
         }
 
@@ -40,7 +43,6 @@ namespace WarriorOrigins
                 PlayerInput();
                 PlayerAnimation();
             }
-            
         }
 
         void FixedUpdate()
@@ -75,7 +77,7 @@ namespace WarriorOrigins
 
         void Movement()
         {
-            if (movement != Vector2.zero)
+            if (canMove && movement != Vector2.zero)
             {
                 rb.velocity = movement * moveSpeed * moveSpeed;
                 isRunning = true;

@@ -18,6 +18,11 @@ namespace WarriorOrigins
             Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
 
+        private void Update()
+        {
+            damage = GameManager.Instance.rangeDamage;
+        }
+
         void OnTriggerEnter2D(Collider2D collision)
         {
             Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();

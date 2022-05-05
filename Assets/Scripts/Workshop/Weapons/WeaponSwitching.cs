@@ -5,16 +5,23 @@ namespace WarriorOrigins
 {
     public class WeaponSwitching : MonoBehaviour
     {
+        private PlayerMovement playerMovement;
 
         public int selectedWeapon = 0;
 
         void Start()
         {
             SelectWeapon();
+            playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         }
 
         void Update()
         {
+            if (!playerMovement.canMove)
+            {
+                return;
+            }
+
             if (DodgeRoll.isRolling)
             {
                 return;
@@ -23,7 +30,6 @@ namespace WarriorOrigins
             if (!PauseMenu.isPause)
             {
                 int previousSelectedWeapon = selectedWeapon;
-
 
                 if (Input.GetAxis("Mouse ScrollWheel") > 0f)
                 {
