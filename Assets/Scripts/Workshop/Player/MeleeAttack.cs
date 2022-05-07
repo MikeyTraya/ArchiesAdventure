@@ -14,7 +14,7 @@ namespace WarriorOrigins
 
         public int damage;
 
-        public int staminaCost = 15;
+        public int staminaCost;
 
         bool attacking = false;
 

@@ -30,16 +30,12 @@ namespace WarriorOrigins
 
         public void AddCoin()
         {
-            coinCount++;
-            GameManager.Instance.totalCoins = coinCount;
-            totalCoins.text = " " + coinCount + "x";
+            GameManager.Instance.totalCoins++;
         }
 
         public void AddBombs()
         {
-            bombsCount++;
-            GameManager.Instance.totalBombs = bombsCount;
-            totalBombs.text = " " + bombsCount + "x";
+            GameManager.Instance.totalBombs++;
         }
 
         public void Update()
@@ -47,8 +43,11 @@ namespace WarriorOrigins
             shovelsCount = GameManager.Instance.totalShovels;
             totalShovels.text = " " + shovelsCount + "x";
 
-            totalCoins.text = " " + GameManager.Instance.totalCoins + "x";
-            totalBombs.text = " " + GameManager.Instance.totalBombs + "x";
+            coinCount = GameManager.Instance.totalCoins;
+            totalCoins.text = " " + coinCount + "x";
+
+            bombsCount = GameManager.Instance.totalBombs;
+            totalBombs.text = " " + bombsCount + "x";
 
         }
     }

@@ -12,16 +12,56 @@ namespace WarriorOrigins
         public TMP_Text dialogText;
         public string dialog;
 
-        public void OpenDialogBox()
+        public bool isInRange;
+        public KeyCode interactKey;
+        public KeyCode mouseInteractKey;
+
+        private void Update()
         {
-            if (dialogBox.activeInHierarchy)
+            if (!isInRange)
             {
-                dialogBox.SetActive(false);
+                return;
             }
-            else
+
+            if (isInRange)
             {
-                dialogBox.SetActive(true);
-                dialogText.text = dialog;
+                if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(mouseInteractKey))
+                {
+                    if (dialogBox.activeInHierarchy)
+                    {
+                        dialogBox.SetActive(false);
+                    }
+                    else
+                    {
+                        dialogBox.SetActive(true);
+                        dialogText.text = dialog;
+                    }
+                }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.gameObject.CompareTag("Player"))
+            {
+                return;
+            }
+
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                isInRange = true;
+                
+                GameManager.Instance.NotifyPlayer();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                isInRange = false;
+                dialogBox.SetActive(false);
+                GameManager.Instance.DenotifyPlayer();
             }
         }
     }

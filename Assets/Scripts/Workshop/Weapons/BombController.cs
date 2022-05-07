@@ -1,21 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace WarriorOrigins
 {
     public class BombController : MonoBehaviour
     {
-        public GameObject bombs;
+        public enum State
+        {
+            MainLevels,
+            Tutorial,
+        }
+
+        public State state;
+
+        public GameObject tutorialBombs;
+        public GameObject mainGameBombs;
         public Vector2 groundDispenseVelocity;
         public Vector2 verticalDispenseVelocity;
 
         private void Update()
         {
-            ThrowBomb();
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                state = State.MainLevels;
+                MainThrowBomb();
+            }
+            else
+            {
+                state = State.Tutorial;
+                TutorialThrowBomb();
+            }
+            
         }
 
-        void ThrowBomb()
+        void TutorialThrowBomb()
         {
             if (GameManager.Instance.totalBombs == 0)
             {
@@ -23,12 +43,20 @@ namespace WarriorOrigins
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                Instantiate(bombs, transform.position, Quaternion.identity);
-                //GameObject spawnedBomb = Instantiate(bombs, transform.position, Quaternion.identity);
-                /*spawnedBomb.GetComponent<FakeHeightProjectiles>().InitializeBomb(
-                    transform.right * Random.Range(groundDispenseVelocity.x, groundDispenseVelocity.y),
-                    Random.Range(verticalDispenseVelocity.x, verticalDispenseVelocity.y));*/
+                Instantiate(tutorialBombs, transform.position, Quaternion.identity);
+                GameManager.Instance.BombsUse();
+            }
+        }
 
+        void MainThrowBomb()
+        {
+            if (GameManager.Instance.totalBombs == 0)
+            {
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Instantiate(mainGameBombs, transform.position, Quaternion.identity);
                 GameManager.Instance.BombsUse();
             }
         }

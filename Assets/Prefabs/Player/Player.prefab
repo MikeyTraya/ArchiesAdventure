@@ -280,7 +280,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -100
   m_Sprite: {fileID: -2413806693520163455, guid: 2ddf972003331db458d27a35f3962e9f, type: 3}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.50980395}
+  m_Color: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 0.5686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -838,7 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a3f135b0bda5c4da08ad0a8f8bf5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 7676831968039223234}
   selectedWeapon: 0
 --- !u!1 &988685886277013510
 GameObject:
@@ -1862,7 +1861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b933fcdd2706aea4bb1ae334397650e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombs: {fileID: 8245492988453038725, guid: b8ae9035fbbc3184c85759258540d1e2, type: 3}
+  state: 1
+  tutorialBombs: {fileID: 8245492988453038725, guid: b8ae9035fbbc3184c85759258540d1e2, type: 3}
+  mainGameBombs: {fileID: 7040684351915936562, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
   groundDispenseVelocity: {x: 8, y: 10}
   verticalDispenseVelocity: {x: 15, y: 20}
 --- !u!1 &5802584573603979810
@@ -2218,7 +2219,7 @@ MonoBehaviour:
   player: {fileID: 6791004798300988974}
   playerMovement: {fileID: 7676831968039223234}
   delayBeforeInvinsible: 0.1
-  invisibleDuration: 0.35
+  invisibleDuration: 0.5
   dodgeCooldown: 1
   pushAmount: 150
   Roll: 0

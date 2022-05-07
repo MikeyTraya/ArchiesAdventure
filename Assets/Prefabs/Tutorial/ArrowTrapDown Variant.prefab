@@ -8,16 +8,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2663720246927858692, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720246927858692, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720246935464515, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2663720246935464515, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247145599770, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247145599770, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247240113010, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247240113010, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
@@ -29,11 +45,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247495042523, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.49
+      value: 3.099997
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247495042523, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.32
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247495042523, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72,24 +88,48 @@ PrefabInstance:
       value: ArrowTrapDown
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247603878463, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247603878463, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247623850802, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247623850802, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247631718988, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247631718988, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247771168599, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247771168599, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2663720247802459693, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720247802459693, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663720248376489060, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2663720248376489060, guid: 21f3de86374d09b4b967e361521e17e9, type: 3}
       propertyPath: state

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace WarriorOrigins
 {
+
     public class GameManager : MonoBehaviour
     {
         public enum State
@@ -18,9 +20,16 @@ namespace WarriorOrigins
         [Header("Player Info")]
         public int health;
         public int numberOfHearts;
+        public int dodgeStamina;
         public float invinsibleAmount;
         public Vector3 innerVisionRange;
         public Vector3 outerVisionRange;
+        public int powerUpBronzeID;
+        public int powerUpSilverID;
+        public int powerUpGoldID;
+        public bool powerUp1isCollected = false;
+        public bool powerUp2isCollected = false;
+        public bool powerUp3isCollected = false;
 
         [Header("CollectedItems Info")]
         public int totalCoins;
@@ -36,15 +45,21 @@ namespace WarriorOrigins
         public int rangeDamage;
         public int bombsDamage;
 
-        [Header("Other Info")]
-        public Image[] hearts;
-        public Sprite fullHeart;
-        public Sprite emptyHearts;
-
         public GameObject player;
 
         public static GameManager Instance;
-        void Awake() => Instance = this;
+        void Awake()
+        {
+            if (Instance == null)
+            {
+                DontDestroyOnLoad(gameObject);
+                Instance = this;
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
@@ -53,30 +68,20 @@ namespace WarriorOrigins
 
         void Update()
         {
+            
+
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                state = State.MainLevels;
+            }
+            else
+            {
+                state = State.Tutorial;
+            }
+
             if (health > numberOfHearts)
             {
                 health = numberOfHearts;
-            }
-
-            for (int i = 0; i < hearts.Length; i++)
-            {
-                if (i < health)
-                {
-                    hearts[i].sprite = fullHeart;
-                }
-                else
-                {
-                    hearts[i].sprite = emptyHearts;
-                }
-
-                if (i < numberOfHearts)
-                {
-                    hearts[i].enabled = true;
-                }
-                else
-                {
-                    hearts[i].enabled = false;
-                }
             }
 
             if (invinsibleAmount > 0)

@@ -29,18 +29,11 @@ namespace WarriorOrigins
                     if (thingsToHide != null)
                     {
                         thingsToHide.SetActive(false);
-                        StartCoroutine(HideDialogBox());
                     }
                     break;
                 default:
                     break;
             }
-        }
-
-        IEnumerator HideDialogBox()
-        {
-            yield return new WaitForSeconds(textDuration);
-            dialogBox.SetActive(false);
         }
     }
 }

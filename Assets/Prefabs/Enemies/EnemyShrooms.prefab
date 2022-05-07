@@ -176,7 +176,7 @@ MonoBehaviour:
   numberOfBullets: 10
   bulletSpeed: 5
   bullets: {fileID: 4519881123824137990, guid: e8eca5f761b7486469ffe9fbd590ac9b, type: 3}
-  burstCooldown: 0
+  burstCooldown: 3
 --- !u!1 &1929055670014606304
 GameObject:
   m_ObjectHideFlags: 0

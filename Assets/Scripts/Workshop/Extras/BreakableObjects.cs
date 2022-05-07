@@ -38,6 +38,15 @@ namespace WarriorOrigins
                     StartCoroutine(Break());
                 }
             }
+
+            if (collision.gameObject.CompareTag("Bombs"))
+            {
+                durability -= durability;
+                if (durability <= 0)
+                {
+                    StartCoroutine(Break());
+                }
+            }
         }
 
         private IEnumerator Break()

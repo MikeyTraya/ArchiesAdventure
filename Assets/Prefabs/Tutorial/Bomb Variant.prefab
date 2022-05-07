@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7040684351915936560, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040684351915936560, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7040684351915936562, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
       propertyPath: m_Name
-      value: Bomb
+      value: Bomb Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7040684351915936563, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
       propertyPath: state
@@ -21,11 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7040684351915936566, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.443874
+      value: 18.445196
       objectReference: {fileID: 0}
     - target: {fileID: 7040684351915936566, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.830223
+      value: 9.103218
       objectReference: {fileID: 0}
     - target: {fileID: 7040684351915936566, guid: 702e4e0b600617a438b0116f7d63ec8a, type: 3}
       propertyPath: m_LocalPosition.z

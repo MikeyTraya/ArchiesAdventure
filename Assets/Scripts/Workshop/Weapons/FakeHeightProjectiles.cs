@@ -95,6 +95,7 @@ namespace WarriorOrigins
             bomb.transform.GetChild(0).gameObject.SetActive(false);
             bomb.transform.GetChild(1).gameObject.SetActive(false);
             bomb.GetComponent<CircleCollider2D>().enabled = true;
+            bomb.GetComponent<BoxCollider2D>().enabled = false;
             bomb.transform.GetChild(3).gameObject.SetActive(true);
             yield return new WaitForSeconds(.5f);
             bomb.GetComponent<CircleCollider2D>().enabled = false;

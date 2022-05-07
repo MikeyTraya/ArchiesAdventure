@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WarriorOrigins
 {
-    public class OpenDoor : MonoBehaviour
+    public class DestroyRoadBlocks : MonoBehaviour
     {
         public int durability;
 
@@ -31,9 +31,5 @@ namespace WarriorOrigins
         {
             Destroy(gameObject);
         }
-
-
-
-
     }
 }

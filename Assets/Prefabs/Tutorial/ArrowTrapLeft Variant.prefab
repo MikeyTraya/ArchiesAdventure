@@ -8,36 +8,72 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 426097905374232804, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905374232804, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905374901332, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 426097905374901332, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 426097905438406129, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905438406129, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905517091199, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 426097905517091199, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 426097905517290477, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905517290477, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905553914774, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 426097905553914774, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 426097905599190340, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905599190340, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 426097905714784806, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097905714784806, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097906357681624, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 426097906357681624, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state
@@ -49,11 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426097906680926809, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.79
+      value: 27.29
       objectReference: {fileID: 0}
     - target: {fileID: 426097906680926809, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 18.330002
       objectReference: {fileID: 0}
     - target: {fileID: 426097906680926809, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: m_LocalPosition.z
@@ -89,7 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426097906680926813, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: m_Name
-      value: ArrowTrapLeft
+      value: ArrowTrapLeft (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 426097906881204661, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 426097906881204661, guid: 7021104f296a7a943a41191c7e8ace54, type: 3}
       propertyPath: state

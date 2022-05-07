@@ -53,12 +53,12 @@ namespace WarriorOrigins
 
             Roll = Input.GetKeyDown(KeyCode.Space);
             
-            if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > 15)
+            if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > GameManager.Instance.dodgeStamina)
             {
                 animator.ResetTrigger("isDodging");
                 if (Roll)
                 {
-                    StaminaBar.Instance.UseStamina(15);
+                    StaminaBar.Instance.UseStamina(GameManager.Instance.dodgeStamina);
                     Dodge();
                 }
                 else

@@ -77,7 +77,6 @@ namespace WarriorOrigins
         {
             flashActive = true;
             flashCounter = flashLength;
-
         }
     }
 }
