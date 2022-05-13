@@ -341,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 7
   powerUp: {fileID: 6483388391424427523}
+  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
 --- !u!1 &6483388391948943082
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 6
   powerUp: {fileID: 6483388392057682841}
+  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
 --- !u!1 &6483388392100089946
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +780,7 @@ MonoBehaviour:
   innerVisionamount: {x: 9, y: 9, z: 0}
   outerVisionamount: {x: 16, y: 16, z: 0}
   powerUp: {fileID: 6483388392100089947}
+  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
 --- !u!1 &6483388392137441082
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +858,7 @@ MonoBehaviour:
   rangeStaminaAmount: 1
   meleeStaminaAmount: 5
   powerUp: {fileID: 6483388392137441083}
+  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}
 --- !u!1 &6483388392188046308
 GameObject:
   m_ObjectHideFlags: 0

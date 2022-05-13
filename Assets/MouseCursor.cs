@@ -29,17 +29,17 @@ namespace WarriorOrigins
                     {
                         if (mainMenuCursorTexture0 != mainMenuCursorTexture1)
                         {
-                            cursorHotspot = new Vector2(mainMenuCursorTexture1.width / 2, mainMenuCursorTexture1.height / 2);
+                            cursorHotspot = new Vector2(mainMenuCursorTexture1.width / 100, mainMenuCursorTexture1.height / 10f);
                             Cursor.SetCursor(mainMenuCursorTexture1, cursorHotspot, CursorMode.Auto);
                         }
                         else
                         {
-                            cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 2, mainMenuCursorTexture0.height / 2);
+                            cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 100, mainMenuCursorTexture0.height / 10f);
                             Cursor.SetCursor(mainMenuCursorTexture0, cursorHotspot, CursorMode.Auto);
                         }
                     }else if (Input.GetMouseButtonUp(0))
                     {
-                        cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 2, mainMenuCursorTexture0.height / 2);
+                        cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 100, mainMenuCursorTexture0.height / 10f);
                         Cursor.SetCursor(mainMenuCursorTexture0, cursorHotspot, CursorMode.Auto);
                     }
                     break;

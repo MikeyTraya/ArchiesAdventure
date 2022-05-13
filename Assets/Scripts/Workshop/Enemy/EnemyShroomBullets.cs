@@ -30,7 +30,7 @@ namespace WarriorOrigins
                 return;
             }
 
-            if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Walls"))
+            if (collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("Walls"))
             {
                 GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 Destroy(effect, 0.3f);

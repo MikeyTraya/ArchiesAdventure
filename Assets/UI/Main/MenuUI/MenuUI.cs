@@ -14,6 +14,9 @@ namespace WarriorOrigins
         private void Start()
         {
             transform.localScale = Vector2.zero;
+            MusicManager.Instance.Play("MainMenuTheme");
+            MusicManager.Instance.Stop("GameTheme");
+            MusicManager.Instance.Stop("GameOverTheme");
         }
 
         public void Open()
@@ -27,14 +30,25 @@ namespace WarriorOrigins
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        public void SetVolume(float volume)
+        public void SetMusicVolume(float volume)
         {
-            Debug.Log(volume);
+            MusicManager.Instance.volume = volume;
+        }
+        public void SetEffectsVolume(float volume)
+        {
+            EffectsManager.Instance.volume = volume;
+        }
+
+        public void Click()
+        {
+            EffectsManager.Instance.Play("Click");
         }
 
         public void QuitGame()
         {
             Application.Quit();
         }
+
+
     }
 }

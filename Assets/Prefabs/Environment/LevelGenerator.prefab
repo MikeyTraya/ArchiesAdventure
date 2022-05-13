@@ -75,11 +75,19 @@ MonoBehaviour:
   - color: {r: 1, g: 1, b: 1, a: 1}
     tileMap: {fileID: 0}
     tile: {fileID: 11400000, guid: a23d166c33e804646bd08ef25e5dd09d, type: 2}
+  - color: {r: 1, g: 1, b: 1, a: 1}
+    tileMap: {fileID: 0}
+    tile: {fileID: 11400000, guid: a1c373f268c808d49ac6079092ec8735, type: 2}
   colorSpawnObjects:
-  - color: {r: 1, g: 0, b: 0, a: 1}
+  - color: {r: 0.93333334, g: 0.50980395, b: 0.93333334, a: 1}
     prefab: {fileID: 1069563210824728076, guid: cf5be03e6ef37354dbe2984123d7f69d, type: 3}
+  - color: {r: 1, g: 0, b: 0, a: 1}
+    prefab: {fileID: 6678308965240989746, guid: 36012d97cc9bd4743858bead03ce7a83, type: 3}
+  - color: {r: 1, g: 1, b: 0, a: 1}
+    prefab: {fileID: 8683031268149553062, guid: da0fa988a2367a447ad8d7f86864667e, type: 3}
   colorSpawnPlayer:
   - color: {r: 0, g: 0, b: 1, a: 1}
     prefab: {fileID: 6791004798300988974, guid: d2276d23acdec454080f0c4a641eb9f8, type: 3}
+  colorSpawnTeleporter: []
   myCinemachine: {fileID: 0}
   player: {fileID: 6791004798300988974, guid: d2276d23acdec454080f0c4a641eb9f8, type: 3}

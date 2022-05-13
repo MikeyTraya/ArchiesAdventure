@@ -64,13 +64,6 @@ namespace WarriorOrigins
                 Destroy(effect, .3f);
                 Destroy(gameObject);
             }
-
-            if (collision.gameObject.CompareTag("EnemyProjectiles"))
-            {
-                effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-                Destroy(effect, .3f);
-                Destroy(gameObject);
-            }
         }
     }
 }

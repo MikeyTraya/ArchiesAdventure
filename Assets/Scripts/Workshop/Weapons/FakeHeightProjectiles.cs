@@ -92,13 +92,16 @@ namespace WarriorOrigins
             groundVelocity = Vector2.zero;
             yield return new WaitForSeconds(3f);
             particle.Play();
+            EffectsManager.Instance.Play("Explosions");
+            CameraShake.Instance.ShakeCamera(5f, 0.5f);
             bomb.transform.GetChild(0).gameObject.SetActive(false);
             bomb.transform.GetChild(1).gameObject.SetActive(false);
             bomb.GetComponent<CircleCollider2D>().enabled = true;
             bomb.GetComponent<BoxCollider2D>().enabled = false;
             bomb.transform.GetChild(3).gameObject.SetActive(true);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.1f);
             bomb.GetComponent<CircleCollider2D>().enabled = false;
+            bomb.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             yield return new WaitForSeconds(10f);
             Destroy(gameObject);
         }

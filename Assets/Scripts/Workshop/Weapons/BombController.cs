@@ -22,10 +22,10 @@ namespace WarriorOrigins
 
         private void Update()
         {
-            if (SceneManager.GetActiveScene().buildIndex == 3)
+            if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6)
             {
                 state = State.MainLevels;
-                MainThrowBomb();
+                TutorialThrowBomb();
             }
             else
             {

@@ -25,12 +25,12 @@ namespace WarriorOrigins
 
         public void Collect()
         {
-            Debug.Log("Bomb collected");
             StartCoroutine(Get());
         }
         private IEnumerator Get()
         {
             particle.Play();
+            EffectsManager.Instance.Play("Pickups");
             spriteRenderer.enabled = false;
             circleCollider2D.enabled = false;
             collectedBomb.transform.GetChild(2).gameObject.SetActive(false);

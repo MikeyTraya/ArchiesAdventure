@@ -29,7 +29,6 @@ namespace WarriorOrigins
             if (collision.gameObject.CompareTag("Player"))
             {
                 isInRange = true;
-                Debug.Log(collision + "is in range");
                 GameManager.Instance.NotifyPlayer();
             }
         }
@@ -39,7 +38,6 @@ namespace WarriorOrigins
             if (collision.gameObject.CompareTag("Player"))
             {
                 isInRange = false;
-                Debug.Log(collision + "is not in range");
                 GameManager.Instance.DenotifyPlayer();
             }
         }

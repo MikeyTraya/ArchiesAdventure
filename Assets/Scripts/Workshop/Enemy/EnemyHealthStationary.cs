@@ -9,21 +9,32 @@ namespace WarriorOrigins
         public int maxHealth;
         public int currentHealth;
 
-        public GameObject floatingText;
-
         private bool flashActive;
         [SerializeField]
         private float flashLength = 0f;
         private float flashCounter = 0f;
         private SpriteRenderer enemySprite;
 
-        CapsuleCollider2D capsuleCollider;
+        public Transform enemyTransform;
+
+        private ParticleSystem particle;
+
+        public GameObject floatingText;
+        public GameObject enemyBody;
+        public GameObject[] lootDrops;
+
+        private int randomNumber;
+
+        private void Awake()
+        {
+            particle = GetComponentInChildren<ParticleSystem>();
+        }
 
         private void Start()
         {
+            randomNumber = Random.Range(0, lootDrops.Length);
             enemySprite = GetComponent<SpriteRenderer>();
             currentHealth = maxHealth;
-            capsuleCollider = GetComponent<CapsuleCollider2D>();
         }
 
         private void Update()
@@ -62,26 +73,40 @@ namespace WarriorOrigins
                 {
                     enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1f);
                     flashActive = false;
-                    capsuleCollider.enabled = true;
                 }
                 flashCounter -= Time.deltaTime;
             }
 
-            if (currentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
+            
         }
 
         public void TakeDamage(int damage)
         {
             GameObject points = Instantiate(floatingText, transform.position, Quaternion.identity) as GameObject;
             points.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+            EffectsManager.Instance.Play("EnemyHurt");
             currentHealth -= damage;
             flashActive = true;
-            capsuleCollider.enabled = false;
             flashCounter = flashLength;
             Debug.Log("Damage Taken");
+
+            if (currentHealth <= 0)
+            {
+                StartCoroutine(Death());
+            }
+        }
+
+        private IEnumerator Death()
+        {
+            particle.Play();
+            EffectsManager.Instance.Play("EnemyDeath");
+            enemyBody.GetComponent<SpriteRenderer>().enabled = false;
+            enemyBody.GetComponent<CapsuleCollider2D>().enabled = false;
+            enemyBody.GetComponent<Animator>().enabled = false;
+            enemyTransform.GetComponent<Transform>().Find("Shadow").gameObject.SetActive(false);
+            yield return new WaitForSeconds(.9f);
+            Destroy(gameObject);
+            Instantiate(lootDrops[randomNumber], transform.position, Quaternion.identity);
         }
     }
 }

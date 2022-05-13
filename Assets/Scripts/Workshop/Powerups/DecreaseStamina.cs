@@ -16,6 +16,8 @@ namespace WarriorOrigins
 
         public Transform powerUp;
 
+        public GameObject floatingText;
+
         private void Awake()
         {
             particle = GetComponentInChildren<ParticleSystem>();
@@ -29,16 +31,18 @@ namespace WarriorOrigins
 
             if (collision.gameObject.CompareTag("Player"))
             {
+                GameObject points = Instantiate(floatingText, transform.position + Vector3.up, Quaternion.identity) as GameObject;
+                points.transform.GetChild(0).GetComponent<TextMesh>().text = "Stamina usage down!";
                 GameManager.Instance.dodgeStamina = dodgeStaminaAmount;
                 GameManager.Instance.rangeWeaponStaminaCost = rangeStaminaAmount;
                 GameManager.Instance.meleeWeaponStaminaCost = meleeStaminaAmount;
-
                 StartCoroutine(OnCollect());
             }
         }
         private IEnumerator OnCollect()
         {
             particle.Play();
+            EffectsManager.Instance.Play("Powerup");
             powerUp.transform.GetChild(0).gameObject.SetActive(false);
             powerUp.transform.GetChild(1).gameObject.SetActive(false);
             boxCollider2D.enabled = false;

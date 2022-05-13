@@ -13,6 +13,7 @@ namespace WarriorOrigins
         private BoxCollider2D boxCollider2D;
 
         public Transform powerUp;
+        public GameObject floatingText;
 
         private void Awake()
         {
@@ -27,7 +28,8 @@ namespace WarriorOrigins
 
             if (collision.gameObject.CompareTag("Player"))
             {
-                //GameManager.Instance.powerUpBronzeisCollected = true;
+                GameObject points = Instantiate(floatingText, transform.position + Vector3.up, Quaternion.identity) as GameObject;
+                points.transform.GetChild(0).GetComponent<TextMesh>().text = "Range Damage Up!";
                 GameManager.Instance.rangeDamage = amount;
                 StartCoroutine(OnCollect());
             }
@@ -36,6 +38,7 @@ namespace WarriorOrigins
         private IEnumerator OnCollect()
         {
             particle.Play();
+            EffectsManager.Instance.Play("Powerup");
             powerUp.transform.GetChild(0).gameObject.SetActive(false);
             powerUp.transform.GetChild(1).gameObject.SetActive(false);
             boxCollider2D.enabled = false;

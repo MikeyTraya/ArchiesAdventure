@@ -1,10 +1,10 @@
-using System;
 using UnityEngine;
 
 namespace WarriorOrigins
 {
     public class DodgeRoll : MonoBehaviour
     {
+
         private Rigidbody2D rb;
         private Animator animator;
         public GameObject player;
@@ -41,9 +41,15 @@ namespace WarriorOrigins
 
             if (!PauseMenu.isPause)
             {
-                float x = Input.GetAxisRaw("Horizontal");
-                float y = Input.GetAxisRaw("Vertical");
-                movement = new Vector2(x, y).normalized;
+                if (!PowerupsContainer.isSelectingPowerUp)
+                {
+                    if (!DeathManager.isDead)
+                    {
+                        float x = Input.GetAxisRaw("Horizontal");
+                        float y = Input.GetAxisRaw("Vertical");
+                        movement = new Vector2(x, y).normalized;
+                    }
+                }      
             }
      
             if (movement.x != 0 || movement.y != 0)
@@ -83,6 +89,7 @@ namespace WarriorOrigins
             player.transform.GetChild(0).gameObject.SetActive(true);
             player.transform.GetChild(1).gameObject.SetActive(false);
             isRolling = true;
+            
         }
     }
 }

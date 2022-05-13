@@ -32,6 +32,7 @@ namespace WarriorOrigins
 
         public void PauseGame()
         {
+            EffectsManager.Instance.Play("PauseMenu");
             pauseMenuCanvas.SetActive(true);
             Time.timeScale = 0f;
             isPause = true;
@@ -39,6 +40,7 @@ namespace WarriorOrigins
 
         public void ResumeGame()
         {
+            EffectsManager.Instance.Play("PauseMenu");
             pauseMenuCanvas.SetActive(false);
             Time.timeScale = 1f;
             isPause = false;

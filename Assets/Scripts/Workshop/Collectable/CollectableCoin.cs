@@ -24,12 +24,12 @@ namespace WarriorOrigins
 
         public void Collect()
         {
-            Debug.Log("Coin collected");
             StartCoroutine(Get());
         }
         private IEnumerator Get()
         {
             particle.Play();
+            EffectsManager.Instance.Play("Pickups");
             spriteRenderer.enabled = false;
             circleCollider2D.enabled = false;
             OnCoinCollected?.Invoke();

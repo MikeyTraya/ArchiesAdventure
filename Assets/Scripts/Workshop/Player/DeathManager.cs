@@ -9,6 +9,8 @@ namespace WarriorOrigins
         public GameObject gameOverMenu;
         public GameObject minimap;
 
+        public static bool isDead;
+
         Animator animator;
 
         private void Awake()
@@ -19,18 +21,20 @@ namespace WarriorOrigins
         private void OnEnable()
         {
             
-            PlayerManager.OnPlayerDeath += EnableGameOverMenu;
+            PlayerHealthCheck.OnPlayerDeath += EnableGameOverMenu;
             
         }
 
         private void OnDisable()
         {
+            isDead = false;
             animator.SetBool("isOpen", false);
-            PlayerManager.OnPlayerDeath -= EnableGameOverMenu;
+            PlayerHealthCheck.OnPlayerDeath -= EnableGameOverMenu;
         }
 
         public void EnableGameOverMenu()
         {
+            isDead = true;
             animator.SetBool("isOpen", true);
             gameOverMenu.SetActive(true);
             minimap.SetActive(false);

@@ -33,7 +33,6 @@ namespace WarriorOrigins
 
         [Header("CollectedItems Info")]
         public int totalCoins;
-        public int totalShovels;
         public int totalBombs;
 
         [Header("Weapon Info")]
@@ -47,6 +46,7 @@ namespace WarriorOrigins
 
         public GameObject player;
 
+
         public static GameManager Instance;
         void Awake()
         {
@@ -59,6 +59,12 @@ namespace WarriorOrigins
             {
                 Destroy(gameObject);
             }
+
+            if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                OnGameRestart();
+                return;
+            }
         }
 
         private void Start()
@@ -68,9 +74,7 @@ namespace WarriorOrigins
 
         void Update()
         {
-            
-
-            if (SceneManager.GetActiveScene().buildIndex == 3)
+            if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6)
             {
                 state = State.MainLevels;
             }
@@ -88,8 +92,25 @@ namespace WarriorOrigins
             {
                 invinsibleAmount -= Time.deltaTime;
             }
+            
         }
 
+        public void OnGameRestart()
+        {
+            MusicManager.Instance.Play("GameTheme");
+            MusicManager.Instance.Stop("MainMenuTheme");
+        }
+
+        public void OnPlayerDeath()
+        {
+            MusicManager.Instance.Play("GameOverTheme");
+            MusicManager.Instance.Stop("GameTheme");
+        }
+
+        public void GameReset()
+        {
+            Destroy(gameObject);
+        }
 
         public void TakeDamage(int damage)
         {
@@ -99,13 +120,11 @@ namespace WarriorOrigins
                 {
                     case State.Tutorial:
                         health -= damage;
-                        player.GetComponent<PlayerManager>().TakeDamage();
-                        Debug.Log("Player was hit");
+                        player.GetComponent<PlayerHealthCheck>().TakeDamage();
                         break;
                     case State.MainLevels:
                         health -= damage;
-                        LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
-                        Debug.Log("Player was hit");
+                        LevelGenerator.Instance.player.GetComponent<PlayerHealthCheck>().TakeDamage();
                         break;
                     default:
                         break;
@@ -119,13 +138,11 @@ namespace WarriorOrigins
             {
                 case State.Tutorial:
                     health -= damage;
-                    player.GetComponent<PlayerManager>().TakeDamage();
-                    Debug.Log("Player was hit");
+                    player.GetComponent<PlayerHealthCheck>().TakeDamage();
                     break;
                 case State.MainLevels:
                     health -= damage;
-                    LevelGenerator.Instance.player.GetComponent<PlayerManager>().TakeDamage();
-                    Debug.Log("Player was hit");
+                    LevelGenerator.Instance.player.GetComponent<PlayerHealthCheck>().TakeDamage();
                     break;
                 default:
                     break;
@@ -169,16 +186,6 @@ namespace WarriorOrigins
             }
         }
 
-        public void ShovelAdd()
-        {
-            totalShovels++;
-        }
-
-        public void ShovelUse()
-        {
-            totalShovels--;
-        }
-
         public void CoinUse()
         {
             totalCoins--;
@@ -203,6 +210,7 @@ namespace WarriorOrigins
                     break;
             }
         }
+
         public void DenotifyPlayer()
         {
             switch (state)
@@ -216,7 +224,6 @@ namespace WarriorOrigins
                 default:
                     break;
             }
-            
         }
     }
 }

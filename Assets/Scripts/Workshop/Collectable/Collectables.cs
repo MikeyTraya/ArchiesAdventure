@@ -10,9 +10,6 @@ namespace WarriorOrigins
         public TMP_Text totalCoins;
         public int coinCount;
 
-        public TMP_Text totalShovels;
-        public int shovelsCount;
-
         public TMP_Text totalBombs;
         public int bombsCount;
 
@@ -40,15 +37,11 @@ namespace WarriorOrigins
 
         public void Update()
         {
-            shovelsCount = GameManager.Instance.totalShovels;
-            totalShovels.text = " " + shovelsCount + "x";
-
             coinCount = GameManager.Instance.totalCoins;
             totalCoins.text = " " + coinCount + "x";
 
             bombsCount = GameManager.Instance.totalBombs;
             totalBombs.text = " " + bombsCount + "x";
-
         }
     }
 }

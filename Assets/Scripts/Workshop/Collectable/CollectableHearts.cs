@@ -26,7 +26,6 @@ namespace WarriorOrigins
         {
             if (GameManager.Instance.health < GameManager.Instance.numberOfHearts)
             {
-                Debug.Log("Heart collected");
                 StartCoroutine(Get());
             }
         }
@@ -34,6 +33,7 @@ namespace WarriorOrigins
         private IEnumerator Get()
         {
             particle.Play();
+            EffectsManager.Instance.Play("Pickups");
             spriteRenderer.enabled = false;
             circleCollider2D.enabled = false;
             OnHeartsCollected?.Invoke();

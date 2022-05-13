@@ -73,7 +73,6 @@ namespace WarriorOrigins
 
                     if (collision.gameObject.CompareTag("Enemy"))
                     {
-                        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
                         effects = Instantiate(sfx, transform.position, Quaternion.identity);
                         Destroy(effects, .3f);
                         gameObject.SetActive(false);
@@ -81,7 +80,6 @@ namespace WarriorOrigins
 
                     if (collision.gameObject.CompareTag("EnemyStationary"))
                     {
-                        collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
                         effects = Instantiate(sfx, transform.position, Quaternion.identity);
                         Destroy(effects, .3f);
                         gameObject.SetActive(false);
@@ -140,7 +138,6 @@ namespace WarriorOrigins
 
                     if (collision.gameObject.CompareTag("Enemy"))
                     {
-                        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
                         effects = Instantiate(sfx, transform.position, Quaternion.identity);
                         Destroy(effects, .3f);
                         gameObject.SetActive(false);
@@ -148,7 +145,6 @@ namespace WarriorOrigins
 
                     if (collision.gameObject.CompareTag("EnemyStationary"))
                     {
-                        collision.gameObject.GetComponent<EnemyHealthStationary>().TakeDamage(damage);
                         effects = Instantiate(sfx, transform.position, Quaternion.identity);
                         Destroy(effects, .3f);
                         gameObject.SetActive(false);
@@ -168,6 +164,7 @@ namespace WarriorOrigins
         public void ActivateTrap()
         {
             effects = Instantiate(sfx, transform.position, Quaternion.identity);
+            //EffectsManager.Instance.Play("ArrowTrap");
             Destroy(effects, .3f);
             lifeTime = 0;
             gameObject.SetActive(true);

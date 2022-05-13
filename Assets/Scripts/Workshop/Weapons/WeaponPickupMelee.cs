@@ -11,12 +11,6 @@ namespace WarriorOrigins
         public void PickupWeapon()
         {
             GameManager.Instance.currentMeleeWeaponEquipped = WeaponID;
-            StartCoroutine(destroyGameObject());
-        }
-
-        IEnumerator destroyGameObject()
-        {
-            yield return new WaitForSeconds(.5f);
             Destroy(gameObject);
         }
     }

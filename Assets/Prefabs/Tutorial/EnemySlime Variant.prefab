@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6665274009710080079, guid: 36012d97cc9bd4743858bead03ce7a83, type: 3}
+      propertyPath: lootDrops.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6678308964131075916, guid: 36012d97cc9bd4743858bead03ce7a83, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6678308965240989746, guid: 36012d97cc9bd4743858bead03ce7a83, type: 3}
       propertyPath: m_Name
-      value: EnemySlime
+      value: EnemySlime Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36012d97cc9bd4743858bead03ce7a83, type: 3}

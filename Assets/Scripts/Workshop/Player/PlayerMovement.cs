@@ -4,6 +4,7 @@ namespace WarriorOrigins
 {
     public class PlayerMovement : MonoBehaviour
     {
+
         public float moveSpeed = 7f;
 
         public Rigidbody2D rb;
@@ -20,12 +21,12 @@ namespace WarriorOrigins
         Animator animator;
         private void OnEnable()
         {
-            PlayerManager.OnPlayerDeath += DisablePlayerMovement;
+            PlayerHealthCheck.OnPlayerDeath += DisablePlayerMovement;
         }
 
         private void OnDisable()
         {
-            PlayerManager.OnPlayerDeath -= DisablePlayerMovement;
+            PlayerHealthCheck.OnPlayerDeath -= DisablePlayerMovement;
         }
 
         void Start()
@@ -40,8 +41,14 @@ namespace WarriorOrigins
         {
             if (!PauseMenu.isPause)
             {
-                PlayerInput();
-                PlayerAnimation();
+                if (!PowerupsContainer.isSelectingPowerUp)
+                {
+                    if (!DeathManager.isDead)
+                    {
+                        PlayerInput();
+                        PlayerAnimation();
+                    }
+                }     
             }
         }
 
@@ -105,6 +112,5 @@ namespace WarriorOrigins
             animator.enabled = true;
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
-
     }
 }

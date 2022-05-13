@@ -29,7 +29,7 @@ namespace WarriorOrigins
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("EnemyProjectiles") || collision.gameObject.CompareTag("Bombs"))
+            if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Sword") || collision.gameObject.CompareTag("EnemyProjectiles") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyStationary") || collision.gameObject.CompareTag("Bombs"))
             {
                 return;
             }
@@ -53,6 +53,7 @@ namespace WarriorOrigins
                 triggered = true;
                 yield return new WaitForSeconds(activationDelay);
                 animator.SetBool("isSomethingHere", true);
+                EffectsManager.Instance.Play("GroundTrap");
 
                 switch (state)
                 {

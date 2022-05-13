@@ -18,7 +18,7 @@ namespace WarriorOrigins
         public GameObject bulletPrefab;
         public GameObject muzzleFX;
         public float bulletForce = 20f;
-        public float shootCooldown = 6f;
+        public float shootCooldown;
         private float actCooldown;
 
         public int staminaCost;
@@ -39,18 +39,24 @@ namespace WarriorOrigins
 
             staminaCost = GameManager.Instance.rangeWeaponStaminaCost;
 
-            if (!PauseMenu.isPause)
+            if (!PauseMenu.isPause )
             {
-                if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > staminaCost)
+                if (!PowerupsContainer.isSelectingPowerUp)
                 {
-                    if (Input.GetButton("Fire1"))
+                    if (!DeathManager.isDead)
                     {
-                        Shoot();
+                        if (actCooldown <= 0 && StaminaBar.Instance.currentStamina > staminaCost)
+                        {
+                            if (Input.GetButton("Fire1"))
+                            {
+                                Shoot();
+                            }
+                        }
+                        else
+                        {
+                            actCooldown -= Time.deltaTime;
+                        }
                     }
-                }
-                else
-                {
-                    actCooldown -= Time.deltaTime;
                 }
             }
         }
@@ -60,6 +66,8 @@ namespace WarriorOrigins
             switch (state)
             {
                 case State.Normal:
+                    EffectsManager.Instance.Play("GunSFX");
+                    CameraShake.Instance.ShakeCamera(2f, 0.15f);
                     StaminaBar.Instance.UseStamina(staminaCost);
                     actCooldown = shootCooldown;
                     GameObject bullet = Instantiate(bulletPrefab, bulletHolder.position, bulletHolder.rotation);
@@ -71,6 +79,8 @@ namespace WarriorOrigins
                     break;
 
                 case State.Shotgun:
+                    EffectsManager.Instance.Play("ShotgunSFX");
+                    CameraShake.Instance.ShakeCamera(5f, 0.15f);
                     StaminaBar.Instance.UseStamina(staminaCost);
                     actCooldown = shootCooldown;
                     GameObject bulletFXS = Instantiate(muzzleFX, bulletHolder.position, bulletHolder.rotation);

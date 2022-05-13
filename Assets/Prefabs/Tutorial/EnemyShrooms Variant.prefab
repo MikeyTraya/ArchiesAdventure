@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224716069768837637, guid: c5660fa0a7ff1b54fb733f7ae373e057, type: 3}
       propertyPath: m_Name
-      value: EnemyShrooms
+      value: EnemyShrooms Variant
       objectReference: {fileID: 0}
     - target: {fileID: 224716069892025099, guid: c5660fa0a7ff1b54fb733f7ae373e057, type: 3}
       propertyPath: m_RootOrder
@@ -65,6 +65,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224716069892025099, guid: c5660fa0a7ff1b54fb733f7ae373e057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610609980757519551, guid: c5660fa0a7ff1b54fb733f7ae373e057, type: 3}
+      propertyPath: lootDrops.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

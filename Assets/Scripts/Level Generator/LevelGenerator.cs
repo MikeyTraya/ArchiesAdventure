@@ -16,6 +16,8 @@ namespace WarriorOrigins
 
         public ColorToPrefab[] colorSpawnPlayer;
 
+        public ColorToPrefab[] colorSpawnTeleporter;
+
         public CinemachineVirtualCamera myCinemachine;
 
         public GameObject player;
@@ -56,7 +58,6 @@ namespace WarriorOrigins
             {
                 if (colorMapping.color.Equals(pixelColor))
                 {
-                    //Vector3 position = new Vector3Int(x, y, 0);
                     colorMapping.tileMap.SetTile(new Vector3Int(x, y, 0), colorMapping.tile);
                 }
             }
