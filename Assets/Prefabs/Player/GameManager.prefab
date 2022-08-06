@@ -66,4 +66,3 @@ MonoBehaviour:
   rangeDamage: 1
   bombsDamage: 3
   player: {fileID: 0}
-  floatingText: {fileID: 1950504502589118178, guid: ce998471aff800248942f4a9b466846f, type: 3}

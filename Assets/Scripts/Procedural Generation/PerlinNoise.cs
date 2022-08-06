@@ -62,12 +62,18 @@ namespace WarriorOrigins
             {
                 for (int y = 0; y < perlinNoiseTexture.height; y++)
                 {
-                    float v = Mathf.PerlinNoise((x + seed) * noiseFrequency, (y + seed) * noiseFrequency);
+                    float v = Texture(x, y, seed, noiseFrequency);
                     perlinNoiseTexture.SetPixel(x, y, new Color(v,v,v));
                 }
             }
 
             perlinNoiseTexture.Apply();
+        }
+
+        private float Texture(int x, int y, float seed, float noiseFrequency)
+        {
+            float v = Mathf.PerlinNoise((x + seed) * noiseFrequency, (y + seed) * noiseFrequency);
+            return v;
         }
     }
 }

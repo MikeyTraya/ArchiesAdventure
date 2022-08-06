@@ -27,6 +27,7 @@ namespace WarriorOrigins
             {
                 if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(mouseInteractKey))
                 {
+                    EffectsManager.Instance.Play("PauseMenu");
                     if (dialogBox.activeInHierarchy)
                     {
                         dialogBox.SetActive(false);

@@ -6861,7 +6861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96d20aa1dcacae40a249d9f29fe8380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 0
   currentHealth: 0
   flashLength: 0.5
 --- !u!114 &1995475602

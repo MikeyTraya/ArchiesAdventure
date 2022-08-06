@@ -8,11 +8,6 @@ namespace WarriorOrigins
     {
         public SoundController[] sounds;
 
-        [Range(0f, 1f)]
-        public float volume;
-        [Range(.1f, 3f)]
-        public float pitch;
-
         public static MusicManager Instance;
         void Awake()
         {
@@ -31,14 +26,17 @@ namespace WarriorOrigins
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
                 s.source.loop = s.loop;
+                s.source.pitch = s.pitch;
+                s.source.spatialBlend = s.spatialBlend;
             }
         }
-        private void Update()
+
+        public void ChangeMasterVolume(float volume)
         {
             foreach (SoundController s in sounds)
             {
                 s.source.volume = volume;
-                s.source.pitch = pitch;
+
             }
         }
 

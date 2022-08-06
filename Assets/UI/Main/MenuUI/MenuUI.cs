@@ -17,6 +17,7 @@ namespace WarriorOrigins
             MusicManager.Instance.Play("MainMenuTheme");
             MusicManager.Instance.Stop("GameTheme");
             MusicManager.Instance.Stop("GameOverTheme");
+            MusicManager.Instance.Stop("EndingTheme");
         }
 
         public void Open()
@@ -28,15 +29,6 @@ namespace WarriorOrigins
         public void PlayGame()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-
-        public void SetMusicVolume(float volume)
-        {
-            MusicManager.Instance.volume = volume;
-        }
-        public void SetEffectsVolume(float volume)
-        {
-            EffectsManager.Instance.volume = volume;
         }
 
         public void Click()

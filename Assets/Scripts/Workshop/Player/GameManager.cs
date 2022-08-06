@@ -62,8 +62,11 @@ namespace WarriorOrigins
 
             if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
             {
-                OnGameRestart();
-                return;
+                MusicOnGameRestart();
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 6)
+            {
+                MusicOnGameLastLevel();
             }
         }
 
@@ -74,7 +77,7 @@ namespace WarriorOrigins
 
         void Update()
         {
-            if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6)
+            if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5)
             {
                 state = State.MainLevels;
             }
@@ -95,13 +98,19 @@ namespace WarriorOrigins
             
         }
 
-        public void OnGameRestart()
+        public void MusicOnGameLastLevel()
+        {
+            MusicManager.Instance.Play("EndingTheme");
+            MusicManager.Instance.Stop("GameTheme");
+        }
+
+        public void MusicOnGameRestart()
         {
             MusicManager.Instance.Play("GameTheme");
             MusicManager.Instance.Stop("MainMenuTheme");
         }
 
-        public void OnPlayerDeath()
+        public void MusicOnPlayerDeath()
         {
             MusicManager.Instance.Play("GameOverTheme");
             MusicManager.Instance.Stop("GameTheme");
