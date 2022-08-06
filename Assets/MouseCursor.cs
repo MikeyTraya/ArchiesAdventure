@@ -25,21 +25,19 @@ namespace WarriorOrigins
             switch (state)
             {
                 case State.MainMenu:
+                    cursorHotspot = new Vector2(gameCursorTexture.width / 100, gameCursorTexture.height / 100);
                     if (Input.GetMouseButtonDown(0))
                     {
                         if (mainMenuCursorTexture0 != mainMenuCursorTexture1)
                         {
-                            cursorHotspot = new Vector2(mainMenuCursorTexture1.width / 100, mainMenuCursorTexture1.height / 10f);
                             Cursor.SetCursor(mainMenuCursorTexture1, cursorHotspot, CursorMode.Auto);
                         }
                         else
                         {
-                            cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 100, mainMenuCursorTexture0.height / 10f);
                             Cursor.SetCursor(mainMenuCursorTexture0, cursorHotspot, CursorMode.Auto);
                         }
                     }else if (Input.GetMouseButtonUp(0))
                     {
-                        cursorHotspot = new Vector2(mainMenuCursorTexture0.width / 100, mainMenuCursorTexture0.height / 10f);
                         Cursor.SetCursor(mainMenuCursorTexture0, cursorHotspot, CursorMode.Auto);
                     }
                     break;

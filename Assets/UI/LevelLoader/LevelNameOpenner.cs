@@ -12,7 +12,7 @@ namespace WarriorOrigins
 
         public TextMeshProUGUI namePlaceholder;
 
-        void Start()
+        void OnEnable()
         {
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
@@ -42,10 +42,8 @@ namespace WarriorOrigins
 
         IEnumerator Display()
         {
-            levelNamePlaceholder.SetActive(true);
             yield return new WaitForSeconds(3f);
             levelNamePlaceholder.SetActive(false);
-
         }
     }
 }

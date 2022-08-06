@@ -32,6 +32,7 @@ namespace WarriorOrigins
 
         public void PauseGame()
         {
+            Click();
             EffectsManager.Instance.Play("PauseMenu");
             pauseMenuCanvas.SetActive(true);
             Time.timeScale = 0f;
@@ -40,6 +41,7 @@ namespace WarriorOrigins
 
         public void ResumeGame()
         {
+            Click();
             EffectsManager.Instance.Play("PauseMenu");
             pauseMenuCanvas.SetActive(false);
             Time.timeScale = 1f;
@@ -48,8 +50,16 @@ namespace WarriorOrigins
 
         public void GoToMainMenu()
         {
-            Time.timeScale = 1;
+            Click();
+            Time.timeScale = 1f;
+            isPause = false;
+            GameManager.Instance.GameReset();
             SceneManager.LoadScene("Main");
+        }
+
+        public void Click()
+        {
+            EffectsManager.Instance.Play("Click");
         }
     }
 }

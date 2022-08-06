@@ -75,13 +75,16 @@ namespace WarriorOrigins
 
         public void TakeDamage()
         {
-            if (GameManager.Instance.health != 0)
+            if (GameManager.Instance.health <= 0)
             {
-                CameraShake.Instance.ShakeCamera(3f, 0.15f);
-                EffectsManager.Instance.Play("PlayerHurt");
-                flashActive = true;
-                flashCounter = flashLength;
+                return;
             }
+
+            CameraShake.Instance.ShakeCamera(3f, 0.15f);
+            EffectsManager.Instance.Play("PlayerHurt");
+            flashActive = true;
+            flashCounter = flashLength;
+
         }
     }
 }
